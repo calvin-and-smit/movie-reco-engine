@@ -1,2 +1,3 @@
 # reco-engine
-Our attempt at building a collaborative filtering based recommendation engine 
+
+_WIP....check back later_
