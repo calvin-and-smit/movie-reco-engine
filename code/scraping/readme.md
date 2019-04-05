@@ -1,4 +1,0 @@
-Scraping plan:
-- 
-- 
--
