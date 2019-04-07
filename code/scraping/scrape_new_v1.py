@@ -43,7 +43,8 @@ def generate_url(genre, pagenum):
 
 
 
-def scrape_json(url, tries):
+
+def scrape_counts(url, tries):
     """
     
     """
@@ -55,40 +56,25 @@ def scrape_json(url, tries):
         except Exception as e:
             time.sleep(2)
     
-    return data
-    
-
-
-def scrape_counts(genre, tries):
-    """
-    
-    """
-    
-    
-    page_url = generate_url(genre, 1)
-    for i in range(tries):
-        try:
-            with urllib.request.urlopen(page_url) as url:
-                data=json.loads(url.read().decode())
-        except Exception as e:
-            time.sleep(2)
-    
     
     return data['counts']
     
 
 
-
-
-
-
-for url in l:
+def scrape_results(url, tries):
+    """
     
-    for p in range(1,100):
-        u = url + str(p)
+    """
+    
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(url) as url:
+                data=json.loads(url.read().decode())
+        except Exception as e:
+            time.sleep(2)
+    
+    return data['results']
 
-
-a = scrape('genre_list.txt')
 
 
 
