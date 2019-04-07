@@ -11,6 +11,7 @@ from db_connect import db_connect
 from pymongo import errors as pme
 from pymongo import MongoClient
 
+os.chdir('code/scraping')
 
 def read(file):
     # Same function as before (read query inputs)
