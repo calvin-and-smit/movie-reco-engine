@@ -22,3 +22,19 @@ def db_connect():
         return MongoClient(uri)[db][col]
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############
+#function to calculate total
