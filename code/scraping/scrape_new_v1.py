@@ -49,6 +49,10 @@ def get_base_urls():
 l = get_base_urls()
 
 
+for url in l:
+    
+    for p in range(1,100):
+        u = url + str(p)
 
 
 
