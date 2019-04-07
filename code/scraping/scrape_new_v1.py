@@ -23,6 +23,17 @@ def db_connect():
 
 
 
+def calculate_pages(counts):
+    """
+    This function calculates the number of pages that will need to be looped through
+    param counts: dict
+    return: number of pages
+    """
+    
+    
+
+
+
 pageLink = 'https://www.rottentomatoes.com/api/private/v2.0/browse?maxTomato=100&maxPopcorn=100&services=amazon%3Bhbo_go%3Bitunes%3Bnetflix_iw%3Bvudu%3Bamazon_prime%3Bfandango_now&genres=1&sortBy=release&type=dvd-streaming-all&page=1'
 
 
@@ -35,7 +46,8 @@ except Exception as e:
 
 
 
-
+counts = data['counts']
+results = data['results']
 
 
 
