@@ -6,6 +6,7 @@ import re
 import time
 import requests
 import os
+import math
 from pymongo import errors as pme
 from pymongo import MongoClient
 
@@ -29,7 +30,10 @@ def calculate_pages(counts):
     param counts: dict
     return: number of pages
     """
-    
+    if counts['count'] == 0:
+        return 0
+    else:
+        return int(counts['total']/32) + 1
     
 
 
@@ -49,7 +53,7 @@ except Exception as e:
 counts = data['counts']
 results = data['results']
 
-
+a = calculate_pages(counts)
 
 
 
