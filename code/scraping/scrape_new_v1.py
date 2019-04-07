@@ -52,13 +52,14 @@ def scrape_counts(genre, tries):
     page_url = generate_url(genre, 1)
     for i in range(tries):
         try:
-            with urllib.request.urlopen(pageLink) as url:
+            with urllib.request.urlopen(page_url) as url:
                 data=json.loads(url.read().decode())
         except Exception as e:
             time.sleep(2)
     
     
-    
+    counts = data['counts']
+    results = data['results']
     
     
     
