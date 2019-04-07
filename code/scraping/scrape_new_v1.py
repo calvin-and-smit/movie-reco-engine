@@ -18,12 +18,6 @@ def read(file):
         return fh.read().strip().split('\n')
 
 
-def db_connect():
-    with open('db.credential', 'r', encoding='utf-8') as fhand:
-        uri, db, col = fhand.read().strip().split('\n')
-        return MongoClient(uri)[db][col]
-
-
 
 def calculate_pages(counts):
     """
