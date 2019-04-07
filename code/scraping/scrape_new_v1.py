@@ -1,11 +1,11 @@
 
 #scraping rottentomatoes
 
-import os
+import urllib.request, json
+import re
 import time
-from selenium import webdriver
-from selenium.common import exceptions as sce
-from selenium.webdriver.chrome.options import Options
+import requests
+import os
 from pymongo import errors as pme
 from pymongo import MongoClient
 
