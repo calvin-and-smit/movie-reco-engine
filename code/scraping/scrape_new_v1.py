@@ -43,6 +43,22 @@ def generate_url(genre, pagenum):
 
 
 
+def scrape_json(url, tries):
+    """
+    
+    """
+    
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(url) as url:
+                data=json.loads(url.read().decode())
+        except Exception as e:
+            time.sleep(2)
+    
+    return data
+    
+
+
 def scrape_counts(genre, tries):
     """
     
@@ -58,12 +74,8 @@ def scrape_counts(genre, tries):
             time.sleep(2)
     
     
-    counts = data['counts']
-    results = data['results']
+    return data['counts']
     
-    
-    
-    return new_url_list
 
 
 
