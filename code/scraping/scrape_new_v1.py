@@ -7,6 +7,7 @@ import time
 import requests
 import os
 import math
+from db_connect import db_connect
 from pymongo import errors as pme
 from pymongo import MongoClient
 
