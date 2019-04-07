@@ -32,6 +32,35 @@ def calculate_pages(counts):
         return math.ceil(counts['total']/32)
     
 
+def get_base_urls():
+    """
+    This function generates the base url structure to be used for looping through different pages
+    return: list of url structure
+    """
+    genres = read('genre_list.txt')
+    base_urls = []
+    for g in genres:
+        base_urls.append('https://www.rottentomatoes.com/api/private/v2.0/browse?maxTomato=100&maxPopcorn=100&services=amazon%3Bhbo_go%3Bitunes%3Bnetflix_iw%3Bvudu%3Bamazon_prime%3Bfandango_now&genres=' + str(g) + '&sortBy=release&type=dvd-streaming-all&page=')
+    return base_urls
+
+
+
+
+l = get_base_urls()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
