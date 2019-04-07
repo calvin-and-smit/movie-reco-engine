@@ -43,8 +43,30 @@ def generate_url(genre, pagenum):
 
 
 
+def scrape_counts(genre, tries):
+    """
+    
+    """
+    
+    
+    page_url = generate_url(genre, 1)
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(pageLink) as url:
+                data=json.loads(url.read().decode())
+        except Exception as e:
+            time.sleep(2)
+    
+    
+    
+    
+    
+    
+    return new_url_list
 
-l = get_base_urls()
+
+
+
 
 
 for url in l:
@@ -53,7 +75,7 @@ for url in l:
         u = url + str(p)
 
 
-
+a = scrape('genre_list.txt')
 
 
 
