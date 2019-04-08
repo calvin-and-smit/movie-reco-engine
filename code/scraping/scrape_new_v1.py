@@ -107,7 +107,9 @@ os.chdir('code/scraping')
 
 #genres = read('genre_list.txt')
 genres = [2]
-existing_url_list = get_existing_urls()
+#existing_url_list = get_existing_urls()
+
+existing_url_list = []
 new_list = []
 for g in genres:
     u = generate_url(g, 1)
