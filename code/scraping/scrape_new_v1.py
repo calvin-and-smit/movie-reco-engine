@@ -11,7 +11,6 @@ from db_connect import db_connect
 from pymongo import errors as pme
 from pymongo import MongoClient
 
-os.chdir('code/scraping')
 
 def read(file):
     # Same function as before (read query inputs)
@@ -102,7 +101,8 @@ def scrape_urls(results_list, existing_url_list):
     return url_list
 
 
-
+# Set relative working directory
+os.chdir('code/scraping')
 
 
 #genres = read('genre_list.txt')
