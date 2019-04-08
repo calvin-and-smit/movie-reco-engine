@@ -120,44 +120,15 @@ for g in genres:
         res = scrape_results(url, 5)
         new_l = scrape_urls(res, existing_url_list)
         new_list.append(new_l)
+
+
    
-     
+# flattening the list of lists into a single usable list      
 final_list = [item for sublist in new_list for item in sublist]       
 
 
-#currently its a list of lists 
-#need to change that
 
 
 
 
 
-
-######
-pageLink = 'https://www.rottentomatoes.com/api/private/v2.0/browse?maxTomato=100&maxPopcorn=100&services=amazon%3Bhbo_go%3Bitunes%3Bnetflix_iw%3Bvudu%3Bamazon_prime%3Bfandango_now&genres=2&sortBy=release&type=dvd-streaming-all&page=1'
-
-
-try:
-    with urllib.request.urlopen(pageLink) as url1:
-        data=json.loads(url1.read().decode())
-except Exception as e:
-    print('failed attept')
-    time.sleep(2)
-
-
-
-counts = data['counts']
-results = data['results']
-
-a = calculate_pages(counts)
-a
-
-s = 0
-for l in new_list:
-    s = s + len(l)
-
-s
-
-
-############
-#function to calculate total
