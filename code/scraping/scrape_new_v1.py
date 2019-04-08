@@ -89,12 +89,12 @@ def scrape_results(url, tries):
     return data['results']
 
 
-def scrape_urls(results_list):
+def scrape_urls(results_list, existing_url_list):
     """
     
     """
     url_list = []
-    existing_url_list = get_existing_urls()
+    
     for r in results_list:
         if r['url'] not in existing_url_list:
             url_list.append(r['url'])
@@ -107,6 +107,7 @@ def scrape_urls(results_list):
 
 #genres = read('genre_list.txt')
 genres = [2]
+existing_url_list = get_existing_urls()
 new_list = []
 for g in genres:
     u = generate_url(g, 1)
@@ -115,7 +116,7 @@ for g in genres:
     for i in range(1, p+1):
         url = generate_url(g, i)
         res = scrape_results(url, 5)
-        new_l = scrape_urls(res)
+        new_l = scrape_urls(res, existing_url_list)
         new_list.append(new_l)
         
         
