@@ -94,6 +94,7 @@ def scrape_urls(results_list):
     
     """
     url_list = []
+    existing_url_list = get_existing_urls()
     for r in results_list:
         url_list.append(r['url'])
     
