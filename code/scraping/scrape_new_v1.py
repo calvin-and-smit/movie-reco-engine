@@ -76,17 +76,32 @@ def scrape_results(url, tries):
     return data['results']
 
 
+def scrape_urls(results_list):
+    """
+    
+    """
+    url_list = []
+    for r in results_list:
+        url_list.append(r['url'])
+    
+    return url_list
+
+
+
 
 
 #genres = read('genre_list.txt')
-genres = [1]
+genres = [2]
+new_list = []
 for g in genres:
     u = generate_url(g, 1)
     counts = scrape_counts(u, 5)
     p = calculate_pages(counts)
-    for i in range(p):
+    for i in range(1, p+1):
         url = generate_url(g, i)
         res = scrape_results(url, 5)
+        new_l = scrape_urls(res)
+        new_list.append(new_l)
         
         
 
