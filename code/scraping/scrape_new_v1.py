@@ -106,7 +106,8 @@ for g in genres:
         
 
 
-
+#currently its a list of lists 
+#need to change that
 
 
 
