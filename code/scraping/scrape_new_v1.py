@@ -78,8 +78,8 @@ def scrape_results(url, tries):
 
 
 
-genres = read('genre_list.txt')
-
+#genres = read('genre_list.txt')
+genres = [1]
 for g in genres:
     u = generate_url(g, 1)
     counts = scrape_counts(u, 5)
