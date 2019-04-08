@@ -19,6 +19,19 @@ def read(file):
         return fh.read().strip().split('\n')
 
 
+def get_existing_urls():
+    # Get existing url list from db
+    try:
+        return list(i['URL'] for i in db_connect().find({}, {"URL": 1, "_id": 0}) if len(i) > 0)
+    except pme.ServerSelectionTimeoutError:  # If connection timed out
+        print('DB server timed out. Global_urls set to empty')
+        return list()
+    except ValueError:  # If db cred file content error
+        print('Db.credential file content error. Global_urls set to empty')
+        return list()
+
+
+
 
 def calculate_pages(counts):
     """
