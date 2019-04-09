@@ -105,8 +105,8 @@ for genre in genre_list:
     total_pages = calculate_pages(initial_url, 5)
     for pagenum in range(1, total_pages+1):
         url = generate_url(genre, pagenum)
-        res = scrape_results(url, 5)
-        new_l = scrape_urls(res, existing_url_list)
+        results = scrape_results(url, 5)
+        new_l = scrape_urls(results, existing_url_list)
         new_list.append(new_l)
 
 
