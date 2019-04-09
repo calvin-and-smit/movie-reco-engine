@@ -120,25 +120,10 @@ for genre in genre_list:
 # flattening the list of lists into a single usable list      
 final_list = [item for sublist in url_list for item in sublist]       
 
+# removing duplicates from the list
+final_url_list = list(set(final_list))
 
 
-
-
-######
-
-
-l1 = ['a','b','c']
-l2 = ['d','e']
-l3 = ['f','g']
-l4 = ['g','h']
-
-l = []
-
-for a in l2:
-    if a not in l:
-        l.append(a)
-        
-        
 
 
 
