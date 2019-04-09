@@ -44,10 +44,10 @@ def calculate_pages(url, tries):
         except:
             time.sleep(2)
     
-    if data['count'] == 0:
+    if data['counts']['count'] == 0:
         return 0
     else:
-        return math.ceil(counts['total']/32)
+        return math.ceil(data['counts']['total']/32)
     
 
 def generate_url(genre, pagenum):
@@ -133,6 +133,24 @@ for g in genres:
 final_list = [item for sublist in new_list for item in sublist]       
 
 
+
+
+
+######
+
+
+l1 = ['a','b','c']
+l2 = ['d','e']
+l3 = ['f','g']
+l4 = ['g','h']
+
+l = []
+
+for a in l2:
+    if a not in l:
+        l.append(a)
+        
+        
 
 
 
