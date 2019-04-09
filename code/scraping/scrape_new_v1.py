@@ -95,16 +95,16 @@ os.chdir('code/scraping')
 
 
 #genres = read('genre_list.txt')
-genres = [1, 2]
+genre_list = [1, 2]
 #existing_url_list = get_existing_urls()
 
 existing_url_list = []
 new_list = []
-for g in genres:
-    initial_url = generate_url(g, 1)
+for genre in genre_list:
+    initial_url = generate_url(genre, 1)
     total_pages = calculate_pages(initial_url, 5)
     for pagenum in range(1, total_pages+1):
-        url = generate_url(g, pagenum)
+        url = generate_url(genre, pagenum)
         res = scrape_results(url, 5)
         new_l = scrape_urls(res, existing_url_list)
         new_list.append(new_l)
