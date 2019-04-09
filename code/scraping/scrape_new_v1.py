@@ -10,6 +10,10 @@ from pymongo import errors as pme
 from pymongo import MongoClient
 
 
+# Set relative working directory
+os.chdir('code/scraping')
+
+
 def read(file):
     # Same function as before (read query inputs)
     with open(file, 'r') as fh:
@@ -90,29 +94,26 @@ def scrape_urls(results_list, existing_url_list):
     return url_list
 
 
-# Set relative working directory
-os.chdir('code/scraping')
-
 
 #genre_list = read('genre_list.txt')
 genre_list = [1, 2]
 #existing_url_list = get_existing_urls()
 
 existing_url_list = []
-new_list = []
+url_list = []
 for genre in genre_list:
     initial_url = generate_url(genre, 1)
     total_pages = calculate_pages(initial_url, 5)
     for pagenum in range(1, total_pages+1):
         url = generate_url(genre, pagenum)
         results = scrape_results(url, 5)
-        new_l = scrape_urls(results, existing_url_list)
-        new_list.append(new_l)
+        scraped_urls = scrape_urls(results, existing_url_list)
+        url_list.append(scraped_urls)
 
 
    
 # flattening the list of lists into a single usable list      
-final_list = [item for sublist in new_list for item in sublist]       
+final_list = [item for sublist in url_list for item in sublist]       
 
 
 
