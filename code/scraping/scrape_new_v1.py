@@ -94,7 +94,7 @@ def scrape_urls(results_list, existing_url_list):
 os.chdir('code/scraping')
 
 
-#genres = read('genre_list.txt')
+#genre_list = read('genre_list.txt')
 genre_list = [1, 2]
 #existing_url_list = get_existing_urls()
 
