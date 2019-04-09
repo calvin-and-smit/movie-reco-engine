@@ -68,9 +68,11 @@ def generate_url(genre, pagenum):
 
 def scrape_results(url, tries):
     """
-    
+    This function scrapes the results part of the data dictionary on each page
+    param url: url of the data page
+    param tries: number of times url is requested 
+    return: results (dictionary)
     """
-    
     for i in range(tries):
         try:
             with urllib.request.urlopen(url) as url:
