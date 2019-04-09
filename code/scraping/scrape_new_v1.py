@@ -30,13 +30,21 @@ def get_existing_urls():
 
 
 
-def calculate_pages(counts):
+def calculate_pages(url, tries):
     """
     This function calculates the number of pages that will need to be looped through
-    param counts: dict
+    param url: the initial url where number of results can be picked up
+    param tries: number of times url is requested 
     return: number of pages
     """
-    if counts['count'] == 0:
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(url) as url:
+                data=json.loads(url.read().decode())
+        except:
+            time.sleep(2)
+    
+    if data['count'] == 0:
         return 0
     else:
         return math.ceil(counts['total']/32)
@@ -111,8 +119,8 @@ existing_url_list = []
 new_list = []
 for g in genres:
     u = generate_url(g, 1)
-    counts = scrape_counts(u, 5)
-    p = calculate_pages(counts)
+    #counts = scrape_counts(u, 5)
+    p = calculate_pages(u, 5)
     for i in range(1, p+1):
         url = generate_url(g, i)
         res = scrape_results(url, 5)
