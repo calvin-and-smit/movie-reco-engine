@@ -2,9 +2,7 @@
 #scraping rottentomatoes
 
 import urllib.request, json
-import re
 import time
-import requests
 import os
 import math
 from db_connect import db_connect
@@ -65,7 +63,7 @@ def scrape_counts(url, tries):
         try:
             with urllib.request.urlopen(url) as url:
                 data=json.loads(url.read().decode())
-        except Exception as e:
+        except:
             time.sleep(2)
     
     
@@ -82,7 +80,7 @@ def scrape_results(url, tries):
         try:
             with urllib.request.urlopen(url) as url:
                 data=json.loads(url.read().decode())
-        except Exception as e:
+        except:
             time.sleep(2)
     
     return data['results']
