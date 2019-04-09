@@ -82,5 +82,6 @@ def dscraper(url):
                             for cast in soup.select_one('div.castSection').select('div.cast-item.media.inlineBlock'))
     return output
 
+
 if __name__ == '__main__':
     pprint(dscraper('/m/star_wars_episode_iii_revenge_of_the_sith'))
