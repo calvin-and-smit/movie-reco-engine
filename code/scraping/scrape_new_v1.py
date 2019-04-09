@@ -59,24 +59,7 @@ def generate_url(genre, pagenum):
     """
     return 'https://www.rottentomatoes.com/api/private/v2.0/browse?maxTomato=100&maxPopcorn=100&services=amazon%3Bhbo_go%3Bitunes%3Bnetflix_iw%3Bvudu%3Bamazon_prime%3Bfandango_now&genres=' + str(genre) + '&sortBy=release&type=dvd-streaming-all&page=' + str(pagenum)
 
-
-
-
-def scrape_counts(url, tries):
-    """
-    
-    """
-    
-    for i in range(tries):
-        try:
-            with urllib.request.urlopen(url) as url:
-                data=json.loads(url.read().decode())
-        except:
-            time.sleep(2)
-    
-    
-    return data['counts']
-    
+  
 
 
 def scrape_results(url, tries):
@@ -120,7 +103,7 @@ new_list = []
 for g in genres:
     u = generate_url(g, 1)
     #counts = scrape_counts(u, 5)
-    p = calculate_pages(u, 5)
+    total_pages = calculate_pages(u, 5)
     for i in range(1, p+1):
         url = generate_url(g, i)
         res = scrape_results(url, 5)
