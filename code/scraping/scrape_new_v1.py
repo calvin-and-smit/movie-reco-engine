@@ -100,8 +100,7 @@ def parse_urls(results_list, existing_url_list):
 
 
 
-#genre_list = read('genre_list.txt')
-genre_list = [1, 2]
+genre_list = read('genre_list.txt')
 #existing_url_list = get_existing_urls()
 
 existing_url_list = []
