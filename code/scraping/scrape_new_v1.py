@@ -71,7 +71,7 @@ def scrape_results(url, tries):
     This function scrapes the results part of the data dictionary on each page
     param url: url of the data page
     param tries: number of times url is requested 
-    return: results (dictionary)
+    return: results (list)
     """
     for i in range(tries):
         try:
@@ -83,9 +83,12 @@ def scrape_results(url, tries):
     return data['results']
 
 
-def scrape_urls(results_list, existing_url_list):
+def parse_urls(results_list, existing_url_list):
     """
-    
+    This function parses the results to grab individual urls
+    param results_list: list of results from which individual urls are to be parsed
+    param existing_url_list: list of existing urls from the DB
+    return: url list
     """
     url_list = []
     
@@ -109,7 +112,7 @@ for genre in genre_list:
     for pagenum in range(1, total_pages+1):
         url = generate_url(genre, pagenum)
         results = scrape_results(url, 5)
-        scraped_urls = scrape_urls(results, existing_url_list)
+        scraped_urls = parse_urls(results, existing_url_list)
         url_list.append(scraped_urls)
 
 
