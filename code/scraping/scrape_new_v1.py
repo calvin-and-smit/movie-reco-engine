@@ -101,9 +101,8 @@ genres = [1, 2]
 existing_url_list = []
 new_list = []
 for g in genres:
-    u = generate_url(g, 1)
-    #counts = scrape_counts(u, 5)
-    total_pages = calculate_pages(u, 5)
+    initial_url = generate_url(g, 1)
+    total_pages = calculate_pages(initial_url, 5)
     for pagenum in range(1, total_pages+1):
         url = generate_url(g, pagenum)
         res = scrape_results(url, 5)
