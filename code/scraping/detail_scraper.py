@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
+from pprint import pprint
 import urllib3
 import certifi
-from pprint import pprint
 
 
 def dscraper(url):
