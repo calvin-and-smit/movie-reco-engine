@@ -14,6 +14,18 @@ from pymongo import MongoClient
 os.chdir('code/scraping')
 
 
+def calculate_runtime(start, end):
+    """
+    
+    """
+    total_time = end - start    #in seconds
+
+    hours, rest = divmod(total_time, 3600)
+    minutes, seconds = divmod(rest, 60)
+    
+    return str(int(hours)) + 'H:' + str(int(minutes)) + 'M:' + str(int(seconds)) + 'S'
+
+
 def read(file):
     # Same function as before (read query inputs)
     with open(file, 'r') as fh:
@@ -99,7 +111,7 @@ def parse_urls(results_list, existing_url_list):
     
     return url_list
 
-start_time = time.strftime('%Y-%m-%d %H:%M:%S')
+start_time = time.time()
 
 genre_list = read('genre_list.txt')
 browse_list = read('browse_type.txt')
@@ -125,9 +137,9 @@ final_list = [item for sublist in url_list for item in sublist]
 # removing duplicates from the list
 final_url_list = list(set(final_list))
 
-end_time = time.strftime('%Y-%m-%d %H:%M:%S')
-print('Runtime: ' + str(end_time - start_time))
+end_time = time.time()
 
+print('Runtime:- ' + calculate_runtime(start_time, end_time))
 
 
 
