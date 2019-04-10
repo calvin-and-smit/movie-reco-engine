@@ -54,14 +54,15 @@ def calculate_pages(url, tries):
         return math.ceil(data['counts']['total']/32)
     
 
-def generate_url(genre, pagenum):
+def generate_url(genre, browse_type, pagenum):
     """
     This function generates the url to be used for scraping
     param genre: genre obtained from the genre_list
+    param browse_type: browse type obtained from the browse_list
     param pagenum: page number 
     return: url string
     """
-    return 'https://www.rottentomatoes.com/api/private/v2.0/browse?maxTomato=100&maxPopcorn=100&services=amazon%3Bhbo_go%3Bitunes%3Bnetflix_iw%3Bvudu%3Bamazon_prime%3Bfandango_now&genres=' + str(genre) + '&sortBy=release&type=dvd-streaming-all&page=' + str(pagenum)
+    return 'https://www.rottentomatoes.com/api/private/v2.0/browse?maxTomato=100&maxPopcorn=100&services=amazon%3Bhbo_go%3Bitunes%3Bnetflix_iw%3Bvudu%3Bamazon_prime%3Bfandango_now&genres=' + str(genre) + '&sortBy=release&type=' + browse_type + '&page=' + str(pagenum)
 
   
 
