@@ -125,8 +125,8 @@ final_list = [item for sublist in url_list for item in sublist]
 # removing duplicates from the list
 final_url_list = list(set(final_list))
 
-
-print(time.strftime('%Y-%m-%d %H:%M:%S'))
+end_time = time.strftime('%Y-%m-%d %H:%M:%S')
+print('Runtime: ' + str(end_time - start_time))
 
 
 
