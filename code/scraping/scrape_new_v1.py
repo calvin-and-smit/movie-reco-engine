@@ -102,18 +102,20 @@ def parse_urls(results_list, existing_url_list):
 
 
 genre_list = read('genre_list.txt')
+browse_list = read('browse_type.txt')
 #existing_url_list = get_existing_urls()
 
 existing_url_list = []
 url_list = []
-for genre in genre_list:
-    initial_url = generate_url(genre, 1)
-    total_pages = calculate_pages(initial_url, 5)
-    for pagenum in range(1, total_pages+1):
-        url = generate_url(genre, pagenum)
-        results = scrape_results(url, 5)
-        scraped_urls = parse_urls(results, existing_url_list)
-        url_list.append(scraped_urls)
+for browse_type in browse_list:
+    for genre in genre_list:
+        initial_url = generate_url(genre, browse_type, 1)
+        total_pages = calculate_pages(initial_url, 5)
+        for pagenum in range(1, total_pages+1):
+            url = generate_url(genre, browse_type, pagenum)
+            results = scrape_results(url, 5)
+            scraped_urls = parse_urls(results, existing_url_list)
+            url_list.append(scraped_urls)
 
 
    
