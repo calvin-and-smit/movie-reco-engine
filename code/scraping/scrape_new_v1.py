@@ -99,7 +99,7 @@ def parse_urls(results_list, existing_url_list):
     
     return url_list
 
-
+start_time = time.strftime('%Y-%m-%d %H:%M:%S')
 
 genre_list = read('genre_list.txt')
 browse_list = read('browse_type.txt')
@@ -126,7 +126,7 @@ final_list = [item for sublist in url_list for item in sublist]
 final_url_list = list(set(final_list))
 
 
-print(time.strftime("%Y-%m-%d %H:%M:%S"))
+print(time.strftime('%Y-%m-%d %H:%M:%S'))
 
 
 
