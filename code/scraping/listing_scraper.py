@@ -33,8 +33,6 @@ def lscraper():
     existing_urls = get_existing_urls()
     # Define other variables
     new_urls = list()
-    # Record start time
-    start_time = time.time()
     # Scrape on
     for initial_url in initial_urls:
         for genre_code in genre_codes:
@@ -61,9 +59,7 @@ def lscraper():
         continue
     # Print number of movie_urls captured
     print('\r\n{} new movie(s) found'.format(len(new_urls)))
-    # Print total run time
-    print('\r\nRun time: {} seconds\r\n'.format(int(time.time() - start_time)))
-    return
+    return new_urls
 
 
 if __name__ == '__main__':
