@@ -70,6 +70,7 @@ def scrape_results(url, tries):
             time.sleep(2)
         else:
             return data['results']
+            
 
 
 def parse_urls(results_list, existing_url_list):
