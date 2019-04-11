@@ -11,7 +11,7 @@ from pymongo import MongoClient
 
 
 # Set relative working directory
-os.chdir('code/scraping')
+# os.chdir('code/scraping')
 
 
 def calculate_runtime(start, end):

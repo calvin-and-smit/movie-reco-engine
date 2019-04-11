@@ -1,3 +1,4 @@
+from db_connect import db_connect
 from pprint import pprint
 import requests
 import math
@@ -12,7 +13,7 @@ def read(file):
 
 # Setup working directory
 # os.chdir('code/scraping')
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
+# os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 # Read dependency files
 initial_urls = read('../../dependencies/rt_initial_urls')
