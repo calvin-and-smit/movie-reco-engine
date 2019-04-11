@@ -113,8 +113,9 @@ def parse_urls(results_list, existing_url_list):
 
 start_time = time.time()
 
-genre_list = read('genre_list.txt')
-browse_list = read('browse_type.txt')
+genre_list = read('../../dependencies/genre_list.txt')
+browse_list = read('../../dependencies/browse_type.txt')
+
 #existing_url_list = get_existing_urls()
 
 existing_url_list = []
