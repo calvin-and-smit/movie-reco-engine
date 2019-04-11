@@ -10,7 +10,6 @@ def read(file):
 
 
 def get_existing_urls():
-    # Get existing url list from db
     try:
         return list(i['Movie_URL'] for i in
                     db_connect('../../connection-details/db1.credential').find(

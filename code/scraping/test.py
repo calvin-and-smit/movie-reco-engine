@@ -1,4 +1,4 @@
-import urllib.request, json
+import requests, json
 import time
 import os
 import math
@@ -32,8 +32,7 @@ def calculate_pages(url, tries):
     """
     for i in range(tries):
         try:
-            with urllib.request.urlopen(url) as u:
-                data = json.loads(u.read().decode())
+            data = requests.get(url).json()
         except:
             time.sleep(2)
         else:
@@ -64,8 +63,7 @@ def scrape_results(url, tries):
     """
     for i in range(tries):
         try:
-            with urllib.request.urlopen(url) as p:
-                data = json.loads(p.read().decode())
+            data = requests.get(url).json()
         except:
             time.sleep(2)
         else:
