@@ -114,4 +114,5 @@ final_url_list = list(set(final_list))
 
 end_time = time.time()
 
+print('Total URLs: ' + str(len(final_url_list)))
 print('Runtime:- ' + calculate_runtime(start_time, end_time))
