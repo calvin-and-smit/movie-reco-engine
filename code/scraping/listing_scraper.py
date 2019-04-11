@@ -2,8 +2,6 @@ from db_connect import db_connect
 from pymongo import errors as pme
 import requests
 import math
-import time
-import os
 
 
 def read(file):
@@ -67,6 +65,6 @@ def lscraper():
 
 if __name__ == '__main__':
     # Setup working directory
+    # import os
     # os.chdir('code/scraping')
-    # os.chdir(os.path.dirname(os.path.realpath(__file__)))
     lscraper()
