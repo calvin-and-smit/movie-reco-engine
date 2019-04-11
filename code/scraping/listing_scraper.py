@@ -40,7 +40,7 @@ def lscraper():
             # Knit url
             i_url = initial_url.format(genre=genre_code, page=1)
             # Learn page limit
-            max_page = math.ceil(requests.get(i_url).json()['counts']['total']/32)
+            max_page = math.ceil(requests.get(i_url).json()['counts']['total'] / 32)
             # Go for launch!
             while True:
                 if page_num <= max_page:
@@ -52,8 +52,9 @@ def lscraper():
                     # Get movie_urls
                     for item in data['results']:
                         if item['url'] not in existing_urls + new_urls:
-                            new_urls.append(item['url'])
-                            print(item['url'])
+                            if item['url'] != '/m/null':
+                                new_urls.append(item['url'])
+                                print(item['url'])
                     page_num += 1
                 else:
                     break

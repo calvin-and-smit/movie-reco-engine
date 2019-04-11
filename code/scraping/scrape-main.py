@@ -12,8 +12,8 @@ final_output = list()
 
 # Start scraping
 new_urls = lscraper()
-for item in new_urls:
-    final_output.append(dscraper(item))
+for new_url in new_urls:
+    final_output.append(dscraper(new_url))
 
 # Load data into db
 col = db_connect('../../connection-details/db1.credential')
