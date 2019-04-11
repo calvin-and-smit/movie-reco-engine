@@ -46,9 +46,11 @@ def lscraper():
                 if page_num <= max_page:
                     # Knit url, again
                     url = initial_url.format(genre=genre_code, page=page_num)
-                    results = requests.get(url).json()['results']
+                    data = requests.get(url).json()
+                    print('\r\n{} on page | Page {}/{} | URL: {}'.format(
+                        data['counts']['count'], page_num, max_page, url))
                     # Get movie_urls
-                    for item in results:
+                    for item in data['results']:
                         if item['url'] not in existing_urls + new_urls:
                             new_urls.append(item['url'])
                             print(item['url'])
@@ -58,7 +60,7 @@ def lscraper():
             continue
         continue
     # Print number of movie_urls captured
-    print('\r\n{} new movie(s) found'.format(len(new_urls)))
+    print('\r\n{} new movie(s) found\r\n'.format(len(new_urls)))
     return new_urls
 
 
