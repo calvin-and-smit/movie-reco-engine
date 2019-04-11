@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from pprint import pprint
-import urllib3
-import certifi
+import requests
 
 
 def dscraper(url):
@@ -12,10 +11,12 @@ def dscraper(url):
     output['Movie_URL'] = url
     print('\r\nObtaining detail page: {}'.format(furl))
     # Load Page
-    page = urllib3.PoolManager(
-        cert_reqs='CERT_REQUIRED', ca_certs=certifi.where()).request('GET', furl).data
+    page = requests.get(furl)
+    if page.status_code != 200:
+        print('\t- Bad page')
+        return None
     # Brew soup
-    soup = BeautifulSoup(page, "html.parser")
+    soup = BeautifulSoup(page.content, "html.parser")
     # FIND Franchise/Flag
     try:
         output['Franchise'] = soup.select_one('div.franchiseLink').select_one('em').text.strip()

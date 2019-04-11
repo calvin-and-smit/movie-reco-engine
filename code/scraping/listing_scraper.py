@@ -43,15 +43,17 @@ def lscraper():
                 if page_num <= max_page:
                     # Knit url, again
                     url = initial_url.format(genre=genre_code, page=page_num)
+                    # Load page
                     data = requests.get(url).json()
                     print('\r\n{} on page | Page {}/{} | URL: {}'.format(
                         data['counts']['count'], page_num, max_page, url))
-                    # Get movie_urls
+                    # Get movie_urls on page
                     for item in data['results']:
-                        if item['url'] not in existing_urls + new_urls:
-                            if item['url'] != '/m/null':
-                                new_urls.append(item['url'])
-                                print(item['url'])
+                        if item['url'] not in existing_urls + new_urls \
+                                and item['url'] != '/m/null' and len(item['url']) > 1:
+                            new_urls.append(item['url'])
+                            print(item['url'])
+                    # Add 1 to page counter
                     page_num += 1
                 else:
                     break
