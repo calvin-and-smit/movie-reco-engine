@@ -140,6 +140,3 @@ final_url_list = list(set(final_list))
 end_time = time.time()
 
 print('Runtime:- ' + calculate_runtime(start_time, end_time))
-
-
-
