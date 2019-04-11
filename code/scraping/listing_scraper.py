@@ -1,4 +1,5 @@
 from db_connect import db_connect
+from pymongo import errors as pme
 from pprint import pprint
 import requests
 import math
@@ -11,6 +12,20 @@ def read(file):
         return fh.read().strip().split('\n')
 
 
+def get_existing_urls():
+    # Get existing url list from db
+    try:
+        return list(i['Movie_URL'] for i in
+                    db_connect('../../connection-details/db1.credential').find(
+                        {}, {"Movie_URL": 1, "_id": 0}) if len(i) > 0)
+    except pme.ServerSelectionTimeoutError:  # If connection timed out
+        print('DB server timed out. Global_urls set to empty')
+        return list()
+    except ValueError:  # If db cred file content error
+        print('Db.credential file content error. Global_urls set to empty')
+        return list()
+
+
 # Setup working directory
 # os.chdir('code/scraping')
 # os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -20,7 +35,7 @@ initial_urls = read('../../dependencies/rt_initial_urls')
 genre_codes = read('../../dependencies/rt_genre_codes')
 
 # Load existing urls from db
-existing_urls = list()
+existing_urls = get_existing_urls()
 
 # Define other variables
 new_urls = list()
