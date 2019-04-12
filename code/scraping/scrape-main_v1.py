@@ -13,12 +13,12 @@ if __name__ == '__main__':
                         read.by_line('../../dependencies/browse_type.txt'))
     for new_url in new_urls:
         # Print progress
-        print('\r\n(#{}/{}) '.format(new_urls.index(new_url) ,len(new_urls)), end='')
+        print('\r\n(#{}/{}) '.format(new_urls.index(new_url)+1, len(new_urls)), end='')
         # Scrape detail page
         data = dscraper(new_url)
         # Upload to db
         if data:
-            db_connect('../../connection-details/db1.credential').insert_one(data)
+            db_connect('../../connection-details/db2.credential').insert_one(data)
         continue
     # Print total run time
     print('\r\nRun time: {} seconds\r\n'.format(int(time.time() - start_time)))

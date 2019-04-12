@@ -11,7 +11,7 @@ if __name__ == '__main__':
     new_urls = lscraper()
     for new_url in new_urls:
         # Print progress
-        print('\r\n(#{}/{}) '.format(new_urls.index(new_url) ,len(new_urls)), end='')
+        print('\r\n(#{}/{}) '.format(new_urls.index(new_url)+1, len(new_urls)), end='')
         # Scrape detail page
         data = dscraper(new_url)
         # Upload to db
