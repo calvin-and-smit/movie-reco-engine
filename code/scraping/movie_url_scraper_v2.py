@@ -4,16 +4,6 @@ import os
 import math
 from get_existing_urls import get_existing_urls
 
-# Set relative working directory
-os.chdir('/Users/CalvinCao/Resilio Sync/GitHub/reco-engine/code/scraping')
-
-
-def calculate_runtime(start, end):
-    total_time = end - start  # in seconds
-    hours, rest = divmod(total_time, 3600)
-    minutes, seconds = divmod(rest, 60)
-    return str(int(hours)) + 'H:' + str(int(minutes)) + 'M:' + str(int(seconds)) + 'S'
-
 
 
 def calculate_pages(url, tries):
