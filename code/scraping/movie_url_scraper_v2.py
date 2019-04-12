@@ -1,6 +1,5 @@
 import requests
 import time
-import os
 import math
 from get_existing_urls import get_existing_urls
 
