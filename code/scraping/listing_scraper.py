@@ -1,17 +1,13 @@
 from get_existing_urls import get_existing_urls
 import requests
 import math
-
-
-def read(file):
-    with open(file, 'r') as fh:
-        return fh.read().strip().split('\n')
+import read
 
 
 def lscraper():
     # Read dependency files
-    initial_urls = read('../../dependencies/rt_initial_urls')
-    genre_codes = read('../../dependencies/rt_genre_codes')
+    initial_urls = read.by_line('../../dependencies/rt_initial_urls')
+    genre_codes = read.by_line('../../dependencies/rt_genre_codes')
     # Load existing urls from db
     existing_urls = get_existing_urls()
     # Define other variables
