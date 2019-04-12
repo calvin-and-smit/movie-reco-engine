@@ -1,6 +1,4 @@
-from get_existing_urls import get_existing_urls
-from db_connect import db_connect
-from pymongo import errors as pme
+from get_existing_urls import get_eurls
 import requests
 import math
 
@@ -15,7 +13,7 @@ def lscraper():
     initial_urls = read('../../dependencies/rt_initial_urls')
     genre_codes = read('../../dependencies/rt_genre_codes')
     # Load existing urls from db
-    existing_urls = get_existing_urls()
+    existing_urls = get_eurls()
     # Define other variables
     new_urls = list()
     # Scrape on

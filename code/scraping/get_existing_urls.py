@@ -2,7 +2,7 @@ from db_connect import db_connect
 from pymongo import errors as pme
 
 
-def get_existing_urls():
+def get_eurls():
     try:
         return list(i['Movie_URL'] for i in
                     db_connect('../../connection-details/db1.credential').find(
