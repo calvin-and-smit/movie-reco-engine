@@ -84,13 +84,10 @@ def parse_urls(results_list, existing_url_list):
 
 
 
-def get_urls():
+def get_urls(genre_list, browse_list):
     """
     
     """
-    
-    genre_list = read('../../dependencies/genre_list.txt')
-    browse_list = read('../../dependencies/browse_type.txt')
     
     existing_url_list = get_existing_urls()
     url_list = list()
