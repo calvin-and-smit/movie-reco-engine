@@ -3,7 +3,7 @@ import time
 import os
 import math
 from db_connect import db_connect
-from get_existing_urls import get_eurls
+from get_existing_urls import get_existing_urls
 
 # Set relative working directory
 os.chdir('/Users/CalvinCao/Resilio Sync/GitHub/reco-engine/code/scraping')
@@ -93,7 +93,7 @@ def get_urls():
     genre_list = read('../../dependencies/genre_list.txt')
     browse_list = read('../../dependencies/browse_type.txt')
     
-    existing_url_list = get_eurls()
+    existing_url_list = get_existing_urls()
     url_list = list()
     for browse_type in browse_list:
         for genre in genre_list:
