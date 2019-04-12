@@ -15,11 +15,6 @@ def calculate_runtime(start, end):
     return str(int(hours)) + 'H:' + str(int(minutes)) + 'M:' + str(int(seconds)) + 'S'
 
 
-def read(file):
-    # Same function as before (read query inputs)
-    with open(file, 'r') as fh:
-        return fh.read().strip().split('\n')
-
 
 def calculate_pages(url, tries):
     """
