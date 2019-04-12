@@ -1,8 +1,7 @@
-import requests, json
+import requests
 import time
 import os
 import math
-from db_connect import db_connect
 from get_existing_urls import get_existing_urls
 
 # Set relative working directory
