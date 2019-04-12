@@ -79,7 +79,7 @@ def parse_urls(results_list, existing_url_list):
     """
     url_list = list()
     for r in results_list:
-        if r['url'] not in existing_url_list:  # Should be existing_url_list + url_list
+        if r['url'] not in existing_url_list:
             url_list.append(r['url'])
     return url_list
 
@@ -102,7 +102,7 @@ for browse_type in browse_list:
             url_list.append(scraped_urls)
 
 # flattening the list of lists into a single usable list
-final_list = list(item for sublist in url_list for item in sublist)  #???
+final_list = list(item for sublist in url_list for item in sublist)
 
 # removing duplicates from the list
 final_url_list = list(set(final_list))
