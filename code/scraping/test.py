@@ -108,6 +108,3 @@ final_list = list(item for sublist in url_list for item in sublist)
 final_url_list = list(set(final_list))
 
 
-
-print('Total URLs: ' + str(len(final_url_list)))
-print('Runtime:- ' + calculate_runtime(start_time, end_time))
