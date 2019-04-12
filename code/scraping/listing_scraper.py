@@ -1,4 +1,4 @@
-from get_existing_urls import get_eurls
+from get_existing_urls import get_existing_urls
 import requests
 import math
 
@@ -13,7 +13,7 @@ def lscraper():
     initial_urls = read('../../dependencies/rt_initial_urls')
     genre_codes = read('../../dependencies/rt_genre_codes')
     # Load existing urls from db
-    existing_urls = get_eurls()
+    existing_urls = get_existing_urls()
     # Define other variables
     new_urls = list()
     # Scrape on
