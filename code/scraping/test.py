@@ -84,7 +84,7 @@ def parse_urls(results_list, existing_url_list):
     return url_list
 
 
-start_time = time.time()
+
 
 genre_list = read('../../dependencies/genre_list.txt')
 browse_list = read('../../dependencies/browse_type.txt')
@@ -107,7 +107,7 @@ final_list = list(item for sublist in url_list for item in sublist)
 # removing duplicates from the list
 final_url_list = list(set(final_list))
 
-end_time = time.time()
+
 
 print('Total URLs: ' + str(len(final_url_list)))
 print('Runtime:- ' + calculate_runtime(start_time, end_time))
