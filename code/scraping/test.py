@@ -3,8 +3,7 @@ import time
 import os
 import math
 from db_connect import db_connect
-from pymongo import errors as pme
-from pymongo import MongoClient
+from get_existing_urls import get_eurls
 
 # Set relative working directory
 os.chdir('/Users/CalvinCao/Resilio Sync/GitHub/reco-engine/code/scraping')
@@ -85,25 +84,12 @@ def parse_urls(results_list, existing_url_list):
     return url_list
 
 
-def get_existing_urls():
-    try:
-        return list(i['Movie_URL'] for i in
-                    db_connect('../../connection-details/db1.credential').find(
-                        {}, {"Movie_URL": 1, "_id": 0}) if len(i) > 0)
-    except pme.ServerSelectionTimeoutError:  # If connection timed out
-        print('DB server timed out. Global_urls set to empty')
-        return list()
-    except ValueError:  # If db cred file content error
-        print('Db.credential file content error. Global_urls set to empty')
-        return list()
-
-
 start_time = time.time()
 
 genre_list = read('../../dependencies/genre_list.txt')
 browse_list = read('../../dependencies/browse_type.txt')
 
-existing_url_list = get_existing_urls()
+existing_url_list = get_eurls()
 url_list = list()
 for browse_type in browse_list:
     for genre in genre_list:
