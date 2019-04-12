@@ -110,13 +110,19 @@ def dscraper(url):
                             try:
                                 output['MI_Director'] = tuple(director.text.strip() for director in mi_item.select('a'))
                             except AttributeError:
-                                print('\t\t- Bad MI_Director')
+                                try:
+                                    output['MI_Director'] = mi_item.select_one('div.meta-value').text.strip()
+                                except AttributeError:
+                                    print('\t\t- Bad MI_Director')
                         # FIND MI_Written_by
                         elif mi_item_label == 'Written By':
                             try:
                                 output['MI_Writer'] = tuple(writer.text.strip() for writer in mi_item.select('a'))
                             except AttributeError:
-                                print('\t\t- Bad MI_Writer')
+                                try:
+                                    output['MI_Writer'] = mi_item.select_one('div.meta-value').text.strip()
+                                except AttributeError:
+                                    print('\t\t- Bad MI_Writer')
                         # FIND MI_In_Theaters
                         elif mi_item_label == 'In Theaters':
                             try:
@@ -141,8 +147,7 @@ def dscraper(url):
                         # FIND MI_Studio
                         elif mi_item_label == 'Studio':
                             try:
-                                # output['MI_Studio'] = tuple(studio.text.strip() for studio in mi_item.select('a'))
-                                output['MI_Studio'] = mi_item.select_one('a').text.strip()
+                                output['MI_Studio'] = mi_item.select_one('div.meta-value').text.strip()
                             except AttributeError:
                                 print('\t\t- Bad MI_Studio')
                         # FIND MI_Box_Office

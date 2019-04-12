@@ -2,20 +2,16 @@ from listing_scraper import lscraper
 from detail_scraper import dscraper
 from db_connect import db_connect
 import time
-import os
 
 
 if __name__ == '__main__':
     # Record start time
     start_time = time.time()
-    # Setup working directory
-    os.chdir(os.path.dirname(os.path.realpath(__file__)))
-    os.chdir('code/scraping')
     # Start scraping
     new_urls = lscraper()
     for new_url in new_urls:
         # Print progress
-        print('\r\n(#{}/{}) | '.format(new_urls.index(new_url) ,len(new_urls)), end='')
+        print('\r\n(#{}/{}) '.format(new_urls.index(new_url) ,len(new_urls)), end='')
         # Scrape detail page
         data = dscraper(new_url)
         # Upload to db
