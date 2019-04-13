@@ -1,8 +1,7 @@
+from get_existing_urls import get_existing_urls
 import requests
 import time
 import math
-from get_existing_urls import get_existing_urls
-
 
 
 def calculate_pages(url, tries):
@@ -73,7 +72,7 @@ def get_urls(genre_list, browse_list):
     
     """
     
-    existing_url_list = get_existing_urls()
+    existing_url_list = get_existing_urls(col_in_use='production')
     url_list = list()
     for browse_type in browse_list:
         for genre in genre_list:
