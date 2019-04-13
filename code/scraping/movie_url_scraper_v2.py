@@ -67,12 +67,12 @@ def parse_urls(results_list, existing_url_list):
 
 
 
-def get_urls(genre_list, browse_list):
+def get_urls(db_connection, genre_list, browse_list):
     """
     
     """
     
-    existing_url_list = get_existing_urls(col_in_use='production')
+    existing_url_list = get_existing_urls(db_connection=db_connection)
     url_list = list()
     for browse_type in browse_list:
         for genre in genre_list:
