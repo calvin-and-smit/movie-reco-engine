@@ -16,7 +16,7 @@ if __name__ == '__main__':
     db_cred_fpath  = '../connection-details/db-reco-engine.credential'
     col_in_use = 'production'
     # Start scraping
-    new_urls = get_urls(db_connect(db_cred=db_cred_fpath, col_in_use=col_in_use),
+    new_urls = get_urls(db_connection=db_connect(db_cred=db_cred_fpath, col_in_use=col_in_use),
                         genre_list=read.by_line('../dependencies/genre_list.txt'),
                         browse_list=read.by_line('../dependencies/browse_type.txt'))
     for new_url in new_urls:
