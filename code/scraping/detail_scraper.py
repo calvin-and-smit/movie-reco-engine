@@ -1,6 +1,7 @@
 import sys
 sys.path.append('scraping')
 sys.path.append('tools')
+
 from get_existing_urls import get_existing_urls
 from db_connect import db_connect
 from bs4 import BeautifulSoup

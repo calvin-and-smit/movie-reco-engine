@@ -1,6 +1,7 @@
 import sys
 sys.path.append('scraping')
 sys.path.append('tools')
+
 from movie_url_scraper_v2 import get_urls
 from detail_scraper import dscrape
 from db_connect import db_connect
