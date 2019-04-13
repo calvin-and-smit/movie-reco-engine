@@ -228,7 +228,8 @@ if __name__ == '__main__':
     # Record start time
     start_time = time.time()
     # Define variables
-    db_cred_fpath, col_in_use = '../../connection-details/db-reco-engine.credential', 'test'
+    db_cred_fpath = '../../connection-details/db-reco-engine.credential'
+    col_in_use = 'test'
     # Start scraping
     new_URLs = lscrape(db_connect(db_cred=db_cred_fpath, col_in_use=col_in_use),
                        initial_urls=read.by_line('../../dependencies/rt_initial_urls'),
