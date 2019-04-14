@@ -1,13 +1,19 @@
 
 #manipulating data
 
-from db_connect import db_connect
 import pandas as pd
 import numpy as np
+import db_connect
 
+# Define Database connection detail
+db_cred_fpath  = '../../connection-details/db-reco-engine.credential'
+db_in_use = 'reco-engine'
+col_in_use = 'production'
 
-col = db_connect('../../connection-details/db2.credential')
+# Get data from Database
+col = db_connect.get_collection(db_cred=db_cred_fpath, db=db_in_use, collection=col_in_use)
 
+# Data Manipulation
 df = pd.DataFrame(list(col.find({}))[:50])
 
 print(df.iloc[0])
