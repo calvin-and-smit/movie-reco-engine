@@ -18,8 +18,8 @@ if __name__ == '__main__':
     col_in_use = 'production'
     # Start scraping
     new_urls = get_urls(db_connect.get_collection(db_cred=db_cred_fpath,
-                                                  db_in_use=db_in_use,
-                                                  col_in_use=col_in_use),
+                                                  db=db_in_use,
+                                                  collection=col_in_use),
                         genre_list=read.by_line('../dependencies/genre_list.txt'),
                         browse_list=read.by_line('../dependencies/browse_type.txt'))
     for new_url in new_urls:
@@ -30,8 +30,8 @@ if __name__ == '__main__':
         # Upload to db
         if data:
             db_connect.get_collection(db_cred=db_cred_fpath,
-                                      db_in_use=db_in_use,
-                                      col_in_use=col_in_use).insert_one(data)
+                                      db=db_in_use,
+                                      collection=col_in_use).insert_one(data)
         continue
     # Print total run time
     print('\r\nRun time: {} seconds\r\n'.format(int(time.time() - start_time)))

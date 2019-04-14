@@ -233,8 +233,8 @@ if __name__ == '__main__':
     col_in_use = 'test'
     # Start scraping
     new_URLs = lscrape(db_connection=db_connect.get_collection(db_cred=db_cred_fpath,
-                                                               db_in_use=db_in_use,
-                                                               col_in_use=col_in_use),
+                                                               db=db_in_use,
+                                                               collection=col_in_use),
                        initial_urls=read.by_line('../../dependencies/rt_initial_urls'),
                        genre_codes=read.by_line('../../dependencies/rt_genre_codes'))
     for new_URL in new_URLs:
@@ -245,8 +245,8 @@ if __name__ == '__main__':
         # Upload to db
         if page_data:
             db_connect.get_collection(db_cred=db_cred_fpath,
-                                      db_in_use=db_in_use,
-                                      col_in_use=col_in_use).insert_one(page_data)
+                                      db=db_in_use,
+                                      collection=col_in_use).insert_one(page_data)
         continue
     # Print total run time
     print('\r\nRun time: {} seconds\r\n'.format(int(time.time() - start_time)))
