@@ -3,8 +3,8 @@ sys.path.append('scraping')
 sys.path.append('tools')
 
 from get_existing_urls import get_existing_urls
-from db_connect import db_connect
 from bs4 import BeautifulSoup
+import db_connect
 import requests
 import math
 import read
@@ -229,9 +229,12 @@ if __name__ == '__main__':
     start_time = time.time()
     # Define variables
     db_cred_fpath = '../../connection-details/db-reco-engine.credential'
+    db_in_use = 'reco-engine'
     col_in_use = 'test'
     # Start scraping
-    new_URLs = lscrape(db_connection=db_connect(db_cred=db_cred_fpath, col_in_use=col_in_use),
+    new_URLs = lscrape(db_connection=db_connect.get_collection(db_cred=db_cred_fpath,
+                                                               db_in_use=db_in_use,
+                                                               col_in_use=col_in_use),
                        initial_urls=read.by_line('../../dependencies/rt_initial_urls'),
                        genre_codes=read.by_line('../../dependencies/rt_genre_codes'))
     for new_URL in new_URLs:
@@ -241,7 +244,9 @@ if __name__ == '__main__':
         page_data = dscrape(new_URL)
         # Upload to db
         if page_data:
-            db_connect(db_cred=db_cred_fpath, col_in_use=col_in_use).insert_one(page_data)
+            db_connect.get_collection(db_cred=db_cred_fpath,
+                                      db_in_use=db_in_use,
+                                      col_in_use=col_in_use).insert_one(page_data)
         continue
     # Print total run time
     print('\r\nRun time: {} seconds\r\n'.format(int(time.time() - start_time)))
