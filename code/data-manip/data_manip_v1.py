@@ -1,5 +1,5 @@
 
-#manipulating data
+# Manipulating data
 
 import sys
 sys.path.append('scraping')
@@ -9,7 +9,9 @@ import db_connect
 import pandas as pd
 import numpy as np
 
-#set working directory
+# Set working directory
+
+
 # Define Database connection detail
 db_cred_fpath  = '../../connection-details/db-reco-engine.credential'
 db_in_use = 'reco-engine'
