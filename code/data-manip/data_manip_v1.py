@@ -4,10 +4,11 @@
 import sys
 sys.path.append('scraping')
 sys.path.append('tools')
+import db_connect
+
 
 import pandas as pd
 import numpy as np
-import db_connect
 
 # Define Database connection detail
 db_cred_fpath  = '../../connection-details/db-reco-engine.credential'
