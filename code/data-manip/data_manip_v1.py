@@ -1,6 +1,10 @@
 
 #manipulating data
 
+import sys
+sys.path.append('scraping')
+sys.path.append('tools')
+
 import pandas as pd
 import numpy as np
 import db_connect
