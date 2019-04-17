@@ -30,14 +30,25 @@ df = pd.DataFrame(list(col.find({}))[:50])
 
 
 
+##################################
 
+########## Idea ##########
+# Ask for 3 movies that user has seen recently as input
+# Find a movie closest from all 3
+# Find an upcoming movie closes from all 3 (use subset of data by filtering on In_Theatres_Date)
 
 
 ##################################
 
 # features to be manipulated:
 ## features to be used for content based knn algorithm
-####
+#### Audience Score
+#### Critics Score
+#### Franchise Flag
+#### Box Office
+#### Director
+#### Genre ****
+#### 
 
 ## features to be used for content based cosine similarity algorithm
 #### 
