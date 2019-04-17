@@ -32,10 +32,10 @@ df = pd.DataFrame(list(col.find({}))[:50])
 
 ##################################
 
-########## Idea ##########
+########## Idea: Similarity algorithm ##########
 # Ask for 3 movies that user has seen recently as input
 # Find a movie closest from all 3
-# Find an upcoming movie closes from all 3 (use subset of data by filtering on In_Theatres_Date)
+# Find an upcoming movie closest from all 3 (use subset of data by filtering on In_Theatres_Date)
 
 
 ##################################
