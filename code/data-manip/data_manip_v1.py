@@ -26,3 +26,21 @@ df = pd.DataFrame(list(col.find({}))[:50])
 #print(df.iloc[10])
 
 
+
+
+
+
+
+
+
+##################################
+
+# features to be manipulated:
+## features to be used for content based knn algorithm
+####
+
+## features to be used for content based cosine similarity algorithm
+#### 
+
+## features to be used for collaborative filtering algorithm
+####
