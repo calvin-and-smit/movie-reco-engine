@@ -23,10 +23,4 @@ col = db_connect.get_collection(db_cred=db_cred_fpath, db=db_in_use, collection=
 # Data Manipulation
 df = pd.DataFrame(list(col.find({}))[:50])
 
-print(df.iloc[0])
-
-print(df.head())
-
-print(df.describe())
-
-print(df.columns)
+#print(df.iloc[0])
