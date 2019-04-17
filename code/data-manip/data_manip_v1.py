@@ -30,7 +30,7 @@ df = pd.DataFrame(list(col.find({}))[:50])
 
 
 
-##################################
+################################################################################################
 
 ########## Idea: Similarity algorithm ##########
 # Ask for 3 movies that user has seen recently as input
@@ -44,7 +44,9 @@ df = pd.DataFrame(list(col.find({}))[:50])
 # Suggest 2-3 movies as recommendations
 ################################################
 
-##################################
+
+
+################################################
 
 # features to be manipulated:
 ## features to be used for content based knn algorithm
@@ -61,3 +63,5 @@ df = pd.DataFrame(list(col.find({}))[:50])
 
 ## features to be used for collaborative filtering algorithm
 ####
+
+################################################
