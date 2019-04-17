@@ -36,7 +36,13 @@ df = pd.DataFrame(list(col.find({}))[:50])
 # Ask for 3 movies that user has seen recently as input
 # Find a movie closest from all 3
 # Find an upcoming movie closest from all 3 (use subset of data by filtering on In_Theatres_Date)
+################################################
 
+########## Idea: Collaborative Filtering algorithm ##########
+# Create user profiles (pre defined) (as future scope look into the ability to letting users select movies)
+# Let user pick a profile
+# Suggest 2-3 movies as recommendations
+################################################
 
 ##################################
 
