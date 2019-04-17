@@ -7,7 +7,7 @@ sys.path.append('tools')
 import db_connect
 
 import pandas as pd
-#import numpy as np
+import numpy as np
 
 # Set working directory
 
