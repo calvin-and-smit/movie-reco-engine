@@ -52,11 +52,16 @@ df = pd.DataFrame(list(col.find({}))[:50])
 ## features to be used for content based knn algorithm
 #### Audience Score
 #### Critics Score
-#### Franchise Flag
+#### Franchise Flag ***
 #### Box Office
 #### Director
 #### Genre ****
-#### 
+#### Director Actor Pair Flag ****
+#### Actor-Actor Pair Flag
+#### Rating **
+#### Studio
+#### TomatoMeter
+#### Streaming Service???
 
 ## features to be used for content based cosine similarity algorithm
 #### 
