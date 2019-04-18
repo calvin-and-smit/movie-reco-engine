@@ -1,4 +1,5 @@
 
 .idea
 *.pyc
-test.py
+code/scraping/test.py
+code/scrape-main2.py
