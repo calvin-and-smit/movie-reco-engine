@@ -207,14 +207,15 @@ def get_movie_detail(url):
             return output
 
 
-def scrape_with_mp(initial_url_list, genre_code_list, db_cred, worker_count1=32, worker_count2=6):
+def scrape_with_mp(iul_fpath, gcl_fpath, db_cred, worker_count1=32, worker_count2=6):
     # Record start time
     start_time1 = time.time()
     # Print start status
     print('\r\nProcedure 1 started\r\n')
 
-    # Procedure 0: Separate database connection details
+    # Procedure 0: Define variables
     db_cred_fpath, db_in_use, col_in_use = db_cred
+    initial_url_list, genre_code_list = read.by_line(iul_fpath), read.by_line(gcl_fpath)
     existing_url_list = get_existing_urls(db_connect.get_collection(db_cred_fpath, db_in_use, col_in_use))
 
     # Procedure 1: Create query combinations
@@ -256,16 +257,16 @@ def scrape_with_mp(initial_url_list, genre_code_list, db_cred, worker_count1=32,
 
 
 if __name__ == '__main__':
-    # Define global variables
-    initial_urls = read.by_line('../../dependencies/rt_initial_urls')
-    genre_codes = read.by_line('../../dependencies/rt_genre_codes')
+    # Define variables
+    initial_urls_fpath = '../../dependencies/rt_initial_urls'
+    genre_codes_fpath = '../../dependencies/rt_genre_codes'
 
     db_credential = ['../../connection-details/db-reco-engine.credential',
                      'reco-engine', 'test']
 
     # Start procedures
-    scrape_with_mp(initial_url_list=initial_urls,
-                   genre_code_list=genre_codes,
+    scrape_with_mp(iul_fpath=initial_urls_fpath,
+                   gcl_fpath=genre_codes_fpath,
                    db_cred=db_credential,
                    worker_count1=48,
                    worker_count2=64)

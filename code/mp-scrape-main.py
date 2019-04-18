@@ -2,21 +2,20 @@ import sys
 sys.path.append('scraping')
 sys.path.append('tools')
 
-import read
 from mp_scraper import scrape_with_mp
 
 
 if __name__ == '__main__':
     # Define variables
-    initial_urls = read.by_line('../dependencies/rt_initial_urls')
-    genre_codes = read.by_line('../dependencies/rt_genre_codes')
+    initial_urls_fpath = '../dependencies/rt_initial_urls'
+    genre_codes_fpath = '../dependencies/rt_genre_codes'
 
     db_credential = ['../connection-details/db-reco-engine.credential',
                      'reco-engine', 'test']
 
     # Start scraping procedures
-    scrape_with_mp(initial_url_list=initial_urls,
-                   genre_code_list=genre_codes,
+    scrape_with_mp(iul_fpath=initial_urls_fpath,
+                   gcl_fpath=genre_codes_fpath,
                    db_cred=db_credential,
                    worker_count1=48,
                    worker_count2=64)
