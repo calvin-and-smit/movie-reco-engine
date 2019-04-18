@@ -8,8 +8,8 @@ import time
 import requests
 import db_connect
 from bs4 import BeautifulSoup
-from get_existing_urls import get_existing_urls
 from multiprocessing import Pool
+from get_existing_urls import get_existing_urls
 
 
 def get_page_limits(combination):
