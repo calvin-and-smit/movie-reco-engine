@@ -2,5 +2,5 @@
 .idea
 *.pyc
 code/scraping/mp_scraper.py
-code/scrape-main-mp.py
+mp-scrape-main.py
 test.py
