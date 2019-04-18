@@ -26,7 +26,7 @@ df = pd.DataFrame(list(col.find({}))[:50])
 #print(df.iloc[10])
 
 a = df.iloc[8]
-
+type(df['Audience_Score_ur'][1])
 
 
 
