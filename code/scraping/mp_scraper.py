@@ -8,7 +8,8 @@ import time
 import requests
 import db_connect
 from bs4 import BeautifulSoup
-from multiprocessing import Pool
+from functools import partial
+from multiprocessing import Pool, Manager
 from get_existing_urls import get_existing_urls
 
 
@@ -34,7 +35,7 @@ def get_movie_urls(listing_url):
     return output
 
 
-def get_movie_detail(url):
+def get_movie_detail(lock, url):
     # Define output variable
     output = dict()
     # Full_URL
@@ -51,11 +52,15 @@ def get_movie_detail(url):
         else:
             break
     if not page:  # Page load error
+        lock.acquire()
         print(f'\t- Bad page (0). Moving on | {furl}')
+        lock.release()
         return False
     else:
         if page.status_code != 200:  # Page status code error
+            lock.acquire()
             print(f'\t- Bad page (1). Moving on | {furl}')
+            lock.release()
             return False
         else:  # Page load successful
             # Brew soup
@@ -214,6 +219,7 @@ def scrape_with_mp(iul_fpath, gcl_fpath, db_cred, worker_count1=32, worker_count
     print('\r\nProcedure 1 started\r\n')
 
     # Procedure 0: Define variables
+    lock = Manager().Lock()
     db_cred_fpath, db_in_use, col_in_use = db_cred
     initial_url_list, genre_code_list = read.by_line(iul_fpath), read.by_line(gcl_fpath)
     existing_url_list = get_existing_urls(db_connect.get_collection(db_cred_fpath, db_in_use, col_in_use))
@@ -241,7 +247,9 @@ def scrape_with_mp(iul_fpath, gcl_fpath, db_cred, worker_count1=32, worker_count
     # Print start status
     print('\r\nProcedure 2 started\r\n')
     # Procedure 5: Scrape on!
-    results = list(result for result in Pool(worker_count2).map(get_movie_detail, movie_urls) if result)
+    results = list(result for result in
+                   Pool(worker_count2).map(partial(get_movie_detail, lock), movie_urls)
+                   if result)
     # Procedure 6: Insert data into database
     if len(results) > 0:
         db_connect.get_collection(db_cred=db_cred_fpath, db=db_in_use, collection=col_in_use).insert_many(results)
