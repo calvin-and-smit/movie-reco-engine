@@ -2,4 +2,4 @@
 .idea
 *.pyc
 code/scraping/test.py
-code/scrape-main2.py
+code/scrape-main-mp.py
