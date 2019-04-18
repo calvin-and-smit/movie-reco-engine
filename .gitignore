@@ -1,6 +1,4 @@
 
 .idea
 *.pyc
-code/scraping/mp_scraper.py
-mp-scrape-main.py
-test.py
+scraping-test.py
