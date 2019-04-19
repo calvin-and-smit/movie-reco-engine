@@ -50,7 +50,7 @@ type(df['Audience_Score_ur'][1])
 
 # features to be manipulated:
 ## features to be used for content based knn algorithm
-#### Audience Score
+#### Audience Score <S>
 #### Critics Score
 #### Franchise Flag ***
 #### Box Office
