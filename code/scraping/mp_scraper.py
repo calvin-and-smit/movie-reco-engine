@@ -229,13 +229,13 @@ def scrape_with_mp(iul_fpath, gcl_fpath, db_cred, worker_count1=32, worker_count
                         for initial_url in initial_url_list)
     # Procedure 2: Get page limits for listing url bases
     listing_urls = dict()
-    for result in Pool(worker_count1).map(get_page_limits, combinations):
+    for result in Pool(16).map(get_page_limits, combinations, chunksize=5):
         listing_urls.update(result)
     # Procedure 3: Populate listing urls by using the listing url bases and page limits
     listing_urls = list(i_url.format(page_number + 1) for i_url in listing_urls
                         for page_number in range(listing_urls[i_url]))
     # Procedure 4: Grab movie urls from listing pages
-    movie_urls = set(movie_url for lists in Pool(worker_count1).map(get_movie_urls, listing_urls)
+    movie_urls = set(movie_url for lists in Pool(worker_count1).map(get_movie_urls, listing_urls, chunksize=10)
                      for movie_url in lists if movie_url not in existing_url_list)
     # Print end status
     print('Procedure 1 finished | {} urls obtained'.format(len(movie_urls)))
