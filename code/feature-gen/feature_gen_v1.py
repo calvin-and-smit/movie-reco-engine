@@ -52,14 +52,14 @@ type(df['Audience_Score_ur'][1])
 ## features to be used for content based knn algorithm
 #### Audience Score <S>
 #### Critics Score <S>
-#### Franchise Flag ***
-#### Box Office
-#### Director
-#### Genre ****
+#### Franchise Flag *** <S>
+#### Box Office <S>
+#### Director <X>
+#### Genre **** <X>
 #### Director Actor Pair Flag ****
 #### Actor-Actor Pair Flag
-#### Rating **
-#### Studio
+#### Rating ** <X>
+#### Studio <X>
 #### TomatoMeter <X>
 #### Streaming Service???
 
