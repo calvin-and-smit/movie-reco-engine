@@ -27,7 +27,12 @@ df = pd.DataFrame(list(col.find({})))
 #type(df['Audience_Score_ur'][1])
 
 
-
+for i in range(len(df['_id'])):
+    try:
+        df['Audience_Score'][i] = int(str(df['Audience_Score'][i]).replace('%', ''))
+        
+    except:
+        df['Audience_Score'][i] = int(0)
 
 
 # Audience Score - converting from text to numeric and also taking in 
