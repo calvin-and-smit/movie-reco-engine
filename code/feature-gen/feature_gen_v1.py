@@ -53,8 +53,8 @@ type(df['Audience_Score_ur'][1])
 #### Audience Score <S>
 #### Critics Score <S>
 #### Franchise Flag ***
-#### Box Office <S>
-#### Director lasidbzv
+#### Box Office
+#### Director
 #### Genre ****
 #### Director Actor Pair Flag ****
 #### Actor-Actor Pair Flag
