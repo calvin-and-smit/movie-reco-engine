@@ -220,9 +220,8 @@ def scrape_with_mp(iul_fpath, gcl_fpath, db_cred, worker_count1=32, worker_count
 
     # Procedure 0: Define variables
     lock = Manager().Lock()
-    db_cred_fpath, db_in_use, col_in_use = db_cred
     initial_url_list, genre_code_list = read.by_line(iul_fpath), read.by_line(gcl_fpath)
-    existing_url_list = get_existing_urls(db_connect.get_collection(db_cred_fpath, db_in_use, col_in_use))
+    existing_url_list = get_existing_urls(db_connect.get_collection(conn_detail=db_cred))
 
     # Procedure 1: Create query combinations
     combinations = list((initial_url, genre_code) for genre_code in genre_code_list
@@ -252,7 +251,7 @@ def scrape_with_mp(iul_fpath, gcl_fpath, db_cred, worker_count1=32, worker_count
                    if result)
     # Procedure 6: Insert data into database
     if len(results) > 0:
-        db_connect.get_collection(db_cred=db_cred_fpath, db=db_in_use, collection=col_in_use).insert_many(results)
+        db_connect.get_collection(conn_detail=db_cred).insert_many(results)
     # Print end status
     print('Procedure 2 finished | {} inserted'.format(len(results)))
     # Delete results
@@ -269,6 +268,7 @@ if __name__ == '__main__':
     initial_urls_fpath = '../../dependencies/rt_initial_urls'
     genre_codes_fpath = '../../dependencies/rt_genre_codes'
 
+    # Define database details
     db_credential = ['../../connection-details/db-reco-engine.credential',
                      'reco-engine', 'test']
 

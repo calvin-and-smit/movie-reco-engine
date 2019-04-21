@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     # Define database details
     db_credential = ['../connection-details/db-reco-engine.credential',
-                     'reco-engine', 'test']
+                     'reco-engine', 'production']
 
     # Start scraping procedures
     scrape_with_mp(iul_fpath=initial_urls_fpath,
