@@ -13,7 +13,7 @@ import numpy as np
 
 
 # Define Database connection detail
-db_credential = ['../connection-details/db-reco-engine.credential',
+db_credential = ['../../connection-details/db-reco-engine.credential',
                  'reco-engine', 'production']
 # Get data from Database
 col = db_connect.get_collection(db_credential)
