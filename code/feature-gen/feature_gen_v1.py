@@ -13,12 +13,10 @@ import numpy as np
 
 
 # Define Database connection detail
-db_cred_fpath  = '../../connection-details/db-reco-engine.credential'
-db_in_use = 'reco-engine'
-col_in_use = 'production'
-
+db_credential = ['../connection-details/db-reco-engine.credential',
+                 'reco-engine', 'production']
 # Get data from Database
-col = db_connect.get_collection(db_cred=db_cred_fpath, db=db_in_use, collection=col_in_use)
+col = db_connect.get_collection(db_credential)
 
 # Data Manipulation
 df = pd.DataFrame(list(col.find({})))
