@@ -1,7 +1,7 @@
 # features to be manipulated:
 
 - features to be used for content based knn algorithm  
-    -Audience Score <S>  
+    -Audience Score [S] 
     -Critics Score <S>  
     -Franchise Flag *** <S>  
     -Box Office <S>  
