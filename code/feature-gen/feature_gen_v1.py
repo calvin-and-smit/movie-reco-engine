@@ -21,12 +21,17 @@ col_in_use = 'production'
 col = db_connect.get_collection(db_cred=db_cred_fpath, db=db_in_use, collection=col_in_use)
 
 # Data Manipulation
-df = pd.DataFrame(list(col.find({}))[:50])
+df = pd.DataFrame(list(col.find({})))
 
 #print(df.iloc[10])
 
 a = df.iloc[8]
 type(df['Audience_Score_ur'][1])
+
+
+
+# Audience Score - converting from text to numeric and also taking in 
+
 
 
 
