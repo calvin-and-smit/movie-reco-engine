@@ -2,8 +2,8 @@
 # Manipulating data
 
 import sys
-sys.path.append('scraping')
-sys.path.append('tools')
+sys.path.append('../scraping')
+sys.path.append('../tools')
 import db_connect
 
 import pandas as pd
@@ -23,8 +23,10 @@ df = pd.DataFrame(list(col.find({})))
 
 #print(df.iloc[10])
 
-a = df.iloc[8]
-type(df['Audience_Score_ur'][1])
+#a = df.iloc[8]
+#type(df['Audience_Score_ur'][1])
+
+
 
 
 
