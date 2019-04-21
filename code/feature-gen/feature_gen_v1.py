@@ -60,7 +60,7 @@ type(df['Audience_Score_ur'][1])
 #### Actor-Actor Pair Flag
 #### Rating **
 #### Studio
-#### TomatoMeter
+#### TomatoMeter <X>
 #### Streaming Service???
 
 ## features to be used for content based cosine similarity algorithm
