@@ -65,7 +65,7 @@ type(df['Audience_Score_ur'][1])
 
 ## features to be used for content based cosine similarity algorithm
 #### 
-hdfhdfdf
+
 ## features to be used for collaborative filtering algorithm
 ####
 
