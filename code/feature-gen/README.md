@@ -1,16 +1,16 @@
 # features to be manipulated:
 
 - features to be used for content based knn algorithm  
-    -Audience Score [S]   
-    -Critics Score [S]  
+    -Audience Score [S] - _NotNeeded_ 
+    -Critics Score [S]  - _NotNeeded_
     -Franchise Flag *** [S] - _Done_ 
-    -Box Office [S]  
+    -Box Office [S]  - _NotNeeded_
     -Director [X]  
     -Genre **** [X]  
     -Director Actor Pair Flag ****  
     -Actor-Actor Pair Flag  
-    -Rating ** [X]  
-    -Studio [X]  
-    -TomatoMeter [X]  
+    -Rating ** [S]  
+    -Studio [S]  
+    -TomatoMeter [S]  
     -Streaming Service???  
 
