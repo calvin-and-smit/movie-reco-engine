@@ -3,7 +3,7 @@
 - features to be used for content based knn algorithm  
     -Audience Score [S] - _NotNeeded_   
     -Critics Score [S]  - _NotNeeded_  
-    -Franchise Flag *** [S] - _Done_   
+    -Franchise Flag *** [S] - _**Done**_  
     -Box Office [S]  - _NotNeeded_  
     -Director [X]  
     -Genre **** [X]  
