@@ -9,7 +9,7 @@
     -Genre **** [X]  
     -Director Actor Pair Flag ****  
     -Actor-Actor Pair Flag  
-    -Rating ** [S]  
+    -Rating  [S] - _**Done**_  
     -Studio [S]  
     -TomatoMeter [S] - _NotNeeded_   
     -Streaming Service???  
