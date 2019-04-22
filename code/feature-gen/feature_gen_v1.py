@@ -52,7 +52,12 @@ df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 #df['MI_Rating'].value_counts()
 
-#len(df['MI_Rating'].unique())
+#len(df['MI_Studio'].unique())
+
+#####
+for i in range(len(df['_id'])):
+    if type(df['MI_Studio'][i]) != type('abc'):
+        print(df['MI_Studio'][i])
 
 
 
