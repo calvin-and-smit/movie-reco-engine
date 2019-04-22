@@ -41,15 +41,19 @@ for i in range(len(df['_id'])):
 #df['Franchise'].value_counts()
 
 
+
+# Movie Rating (to be used in conjunction with Genre)
+# Removing the extra content within parathesis that explains the basis for the rating
 df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 
 
 
 
-df['MI_Rating'].value_counts()
 
-len(df['MI_Rating'].unique())
+#df['MI_Rating'].value_counts()
+
+#len(df['MI_Rating'].unique())
 
 
 
