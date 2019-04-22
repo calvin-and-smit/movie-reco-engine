@@ -11,6 +11,6 @@
     -Actor-Actor Pair Flag  
     -Rating ** [S]  
     -Studio [S]  
-    -TomatoMeter [S]  
+    -TomatoMeter [S] - _NotNeeded_   
     -Streaming Service???  
 
