@@ -1,6 +1,8 @@
 
 # Manipulating data
 
+
+# Set working directory
 import sys
 sys.path.append('../scraping')
 sys.path.append('../tools')
@@ -9,7 +11,7 @@ import db_connect
 import pandas as pd
 import numpy as np
 
-# Set working directory
+
 
 
 # Define Database connection detail
@@ -21,7 +23,7 @@ col = db_connect.get_collection(db_credential)
 # Data Manipulation
 df = pd.DataFrame(list(col.find({})))
 
-#print(df.iloc[10])
+#print(df.iloc[8])
 
 #a = df.iloc[8]
 #type(df['Audience_Score_ur'][1])
