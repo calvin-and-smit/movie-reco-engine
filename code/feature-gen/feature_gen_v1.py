@@ -41,6 +41,16 @@ for i in range(len(df['_id'])):
 #df['Franchise'].value_counts()
 
 
+df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
+
+
+
+
+
+df['MI_Rating'].value_counts()
+
+len(df['MI_Rating'].unique())
+
 
 
 
