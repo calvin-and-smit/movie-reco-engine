@@ -29,19 +29,18 @@ df = pd.DataFrame(list(col.find({})))
 #type(df['Audience_Score_ur'][1])
 
 
-for i in range(len(df['_id'])):
-    try:
-        df['Audience_Score'][i] = int(str(df['Audience_Score'][i]).replace('%', ''))
-        
-    except:
-        df['Audience_Score'][i] = int(0)
 
-
-# Audience Score - converting from text to numeric and also taking in 
+# Franchise
+# Replacing NaNs with 0 first 
 df['Franchise'].fillna(0, inplace=True)
+# Replacing non-0 values with 1 since they are a part of a franchise
+for i in range(len(df['_id'])):
+    if df['Franchise'][i] != 0:
+        df['Franchise'][i] = 1
+        
+#df['Franchise'].value_counts()
 
 
-temp = df['Audience_Score'].value_counts()
 
 
 
