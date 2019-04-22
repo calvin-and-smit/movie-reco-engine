@@ -38,7 +38,10 @@ for i in range(len(df['_id'])):
 
 
 # Audience Score - converting from text to numeric and also taking in 
+df['Franchise'].fillna(0, inplace=True)
 
+
+temp = df['Audience_Score'].value_counts()
 
 
 
