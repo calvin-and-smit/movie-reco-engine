@@ -63,8 +63,8 @@ def feat_gen_genres():
         db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
                                                            {'$set': data_to_insert},
                                                            upsert=True)
-        # Feature generation complete & print status & runtime
-        print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
+    # Feature generation complete & print status & runtime
+    print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
     return
 
 
