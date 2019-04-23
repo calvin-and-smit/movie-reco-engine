@@ -4,7 +4,6 @@ import sys
 sys.path.append('../scraping')
 sys.path.append('../tools')
 
-import read
 import db_connect
 from copy import deepcopy
 from pprint import pprint
@@ -92,9 +91,6 @@ if __name__ == '__main__':
                     'reco-engine', 'production']
     db_cred_feat = ['../../connection-details/db-reco-engine.credential',
                     'reco-engine', 'features']
-
-    # Generate Genre feature
-    genre_code_list = read.by_line('../../dependencies/rt_genre_codes')
 
     # Generate director feature
     feat_gen_directors()
