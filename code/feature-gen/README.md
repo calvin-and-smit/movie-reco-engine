@@ -5,7 +5,7 @@
     -Critics Score [S]  - _NotNeeded_  
     -Franchise Flag *** [S] - _**Done**_  
     -Box Office [S]  - _NotNeeded_  
-    -Director [X]  
+    -Director [X] - _**Done**_    
     -Genre **** [X]  
     -Director Actor Pair Flag ****  
     -Actor-Actor Pair Flag  
