@@ -5,7 +5,6 @@ sys.path.append('../scraping')
 sys.path.append('../tools')
 
 import db_connect
-from pprint import pprint
 from copy import deepcopy
 from collections import Counter
 
@@ -34,8 +33,6 @@ def feat_gen_directors(director_list: list):
             db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
                                                                {'$set': data_to_insert},
                                                                upsert=True)
-            # Verifying output
-            # pprint(data_to_insert)
             continue
     return
 
@@ -65,8 +62,6 @@ def feat_gen_genre():
             db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
                                                                {'$set': data_to_insert},
                                                                upsert=True)
-            # Verifying output
-            # pprint(data_to_insert)
     return
 
 
