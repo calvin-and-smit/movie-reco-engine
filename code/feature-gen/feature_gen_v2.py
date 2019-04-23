@@ -27,8 +27,7 @@ def feat_gen_directors(db_cred_prod: list, db_cred_feat: list):
     # (Using the top 20 most common directors extracted from database for now)
     important_directors = list(item[0] for item in unique_directors.most_common(20))
     # Create data_to_insert template dictionary for faster IO
-    dti_template = dict((f"Dir_{director.replace(' ','-')}", False) for director in important_directors)
-    dti_template.update({'Other_Directors': False})
+    dti_template = dict((f"Dir_{director.replace(' ','-')}", 0) for director in important_directors)
 
     # Generate Directors feature
     with db_connect.get_collection(db_cred_prod).find({}) as prod_data:
@@ -40,9 +39,7 @@ def feat_gen_directors(db_cred_prod: list, db_cred_feat: list):
             if 'MI_Director' in row:
                 for director in row['MI_Director']:
                     if director in important_directors:
-                        data_to_insert[f"Dir_{director.replace(' ','-')}"] = True
-                    elif director not in important_directors:
-                        data_to_insert['Other_Directors'] = True
+                        data_to_insert[f"Dir_{director.replace(' ','-')}"] = 1
                 pass
             elif 'MI_Director' not in row:
                 pass
@@ -66,7 +63,7 @@ def feat_gen_genre(db_cred_prod: list, db_cred_feat: list):
                 gen_code_list.add(genre)
 
     # Create data_to_insert template
-    dti_template = dict((f'Genre_{gen_code}', False) for gen_code in gen_code_list)
+    dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in gen_code_list)
 
     # Generate Genre feature
     with db_connect.get_collection(db_cred_prod).find({}) as prod_data:
@@ -74,7 +71,7 @@ def feat_gen_genre(db_cred_prod: list, db_cred_feat: list):
         for row in prod_data:
             data_to_insert = deepcopy(dti_template)
             for genre in row['MI_Genre']:
-                data_to_insert[f'Genre_{genre}'] = True
+                data_to_insert[f'Genre_{genre}'] = 1
             # Insert data into features collection in the database
             db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
                                                                {'$set': data_to_insert},
