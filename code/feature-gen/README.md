@@ -10,7 +10,7 @@
     -Director Actor Pair Flag ****  
     -Actor-Actor Pair Flag  
     -Rating  [S] - _**Done**_  
-    -Studio [S]  
+    -Studio [S]  - _WIP_  
     -TomatoMeter [S] - _NotNeeded_   
     -Streaming Service???  
 
