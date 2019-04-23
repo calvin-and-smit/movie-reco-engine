@@ -85,6 +85,7 @@ def feat_gen_genre(db_cred_prod: list, db_cred_feat: list):
 
 
 if __name__ == '__main__':
+
     # Define database details
     dbc_prod = ['../../connection-details/db-reco-engine.credential',
                 'reco-engine', 'production']

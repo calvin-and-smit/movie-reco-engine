@@ -6,7 +6,7 @@
     -Franchise Flag *** [S] - _**Done**_  
     -Box Office [S]  - _NotNeeded_  
     -Director [X] - _**Done**_    
-    -Genre **** [X]  
+    -Genre **** [X] - _**Done**_    
     -Director Actor Pair Flag ****  
     -Actor-Actor Pair Flag  
     -Rating  [S] - _**Done**_  
