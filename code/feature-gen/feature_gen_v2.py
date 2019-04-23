@@ -1,9 +1,8 @@
-import os
-os.chdir('/home/windr/GitHub/reco-engine/code/feature-gen')
 import sys
 sys.path.append('../scraping')
 sys.path.append('../tools')
 
+import time
 import db_connect
 from copy import deepcopy
 from collections import Counter
@@ -12,6 +11,9 @@ from collections import Counter
 def feat_gen_directors(director_list: list):
     # Load variables from global
     global prod_data, db_cred_feat
+    # Print status & record start time
+    print('\r\nFeature generation for Directors started')
+    start_time = time.time()
     # Check for empty input list
     if len(director_list) > 0:
         # Create data_to_insert template dictionary for faster IO
@@ -32,6 +34,8 @@ def feat_gen_directors(director_list: list):
             db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
                                                                {'$set': data_to_insert},
                                                                upsert=True)
+        # Feature generation complete & print status & runtime
+        print(f'\r\nFeature generation for Directors finished (runtime: {time.time() - start_time} seconds)\r\n')
     # If input list is empty
     else:
         print('Bad director list')
@@ -39,9 +43,12 @@ def feat_gen_directors(director_list: list):
     return
 
 
-def feat_gen_genre():
+def feat_gen_genres():
     # Load variables from global
     global prod_data, db_cred_feat
+    # Print status & record start time
+    print('\r\nFeature generation for Genres started')
+    start_time = time.time()
     # Load unique genre codes from production dataset
     gen_code_list = set(genre for row in prod_data for genre in row['MI_Genre'])
     # Create data_to_insert template
@@ -56,6 +63,8 @@ def feat_gen_genre():
         db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
                                                            {'$set': data_to_insert},
                                                            upsert=True)
+        # Feature generation complete & print status & runtime
+        print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
     return
 
 
@@ -84,6 +93,6 @@ if __name__ == '__main__':
     # Generate director feature
     feat_gen_directors(director_list=important_directors)
     # Generate Genre feature
-    feat_gen_genre()
+    feat_gen_genres()
 
     pass
