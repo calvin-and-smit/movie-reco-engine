@@ -11,7 +11,9 @@ from pprint import pprint
 from collections import Counter
 
 
-def feat_gen_directors(db_cred_prod: list, db_cred_feat: list):
+def feat_gen_directors():
+    # Read DB_cred from global
+    global db_cred_prod, db_cred_prod
     # Obtain unique directors as a Counter() object from production collection in the database
     with db_connect.get_collection(db_cred_prod).find({}) as prod_data:
         # Obtain unique directors list
@@ -54,7 +56,9 @@ def feat_gen_directors(db_cred_prod: list, db_cred_feat: list):
     return
 
 
-def feat_gen_genre(db_cred_prod: list, db_cred_feat: list):
+def feat_gen_genre():
+    # Read DB_cred from global
+    global db_cred_prod, db_cred_prod
     # Load unique genre codes from production dataset
     gen_code_list = set()
     with db_connect.get_collection(db_cred_prod).find({}) as prod_data:
@@ -84,16 +88,16 @@ def feat_gen_genre(db_cred_prod: list, db_cred_feat: list):
 if __name__ == '__main__':
 
     # Define database details
-    dbc_prod = ['../../connection-details/db-reco-engine.credential',
-                'reco-engine', 'production']
-    dbc_feat = ['../../connection-details/db-reco-engine.credential',
-                'reco-engine', 'features']
+    db_cred_prod = ['../../connection-details/db-reco-engine.credential',
+                    'reco-engine', 'production']
+    db_cred_feat = ['../../connection-details/db-reco-engine.credential',
+                    'reco-engine', 'features']
 
     # Generate Genre feature
     genre_code_list = read.by_line('../../dependencies/rt_genre_codes')
 
     # Generate director feature
-    feat_gen_directors(dbc_prod, dbc_feat)
+    feat_gen_directors()
 
     # Generate Genre feature
-    feat_gen_genre(dbc_prod, dbc_feat)
+    feat_gen_genre()
