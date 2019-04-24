@@ -5,6 +5,8 @@ sys.path.append('../tools')
 import time
 import db_connect
 from copy import deepcopy
+from pprint import pprint
+from pymongo import UpdateOne
 from collections import Counter
 
 
@@ -18,6 +20,8 @@ def feat_gen_directors(director_list: list):
     if len(director_list) > 0:
         # Create data_to_insert template dictionary for faster IO
         dti_template = dict((f"Dir_{director.replace(' ','-')}", 0) for director in director_list)
+        # Define pending job list for bulk write
+        pending_jobs = list()
         # Generate Directors feature
         for row in prod_data:
             # Use Deepcopy to create a 'deep' copy from dti_template
@@ -27,10 +31,11 @@ def feat_gen_directors(director_list: list):
             if 'MI_Director' in row:
                 data_to_insert.update(dict((f"Dir_{director.replace(' ','-')}", 1) for director in row['MI_Director']
                                            if director in director_list))
-            # Insert data into features collection in the database
-            # Option upsert=True is necessary; Equivalent to 'insert or update if exists'
-            db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']}, {'$set': data_to_insert},
-                                                               upsert=True)
+            # Append job into pending job list
+            # (Option upsert=True is necessary; Equivalent to 'insert or update if exists')
+            pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
+        # Bulk write to the database & pretty print result
+        db_connect.get_collection(db_cred_feat).bulk_write(pending_jobs)
         # Feature generation complete & print status & runtime
         print(f'\r\nFeature generation for Directors finished (runtime: {time.time() - start_time} seconds)\r\n')
     # If input list is empty
@@ -48,13 +53,17 @@ def feat_gen_genres():
     # Create data_to_insert template
     dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in
                         set(genre for row in prod_data for genre in row['MI_Genre']))
+    # Define pending job list for bulk write
+    pending_jobs = list()
     # Generate Genre feature
     for row in prod_data:
         # Check Genre for each movie(row) & update data_to_insert
         data_to_insert = deepcopy(dti_template)
         data_to_insert.update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
-        # Insert data into features collection in the database
-        db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True)
+        # Append job into pending job list
+        pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
+    # Bulk write to the database & pretty print result
+    db_connect.get_collection(db_cred_feat).bulk_write(pending_jobs)
     # Feature generation complete & print status & runtime
     print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
     return
