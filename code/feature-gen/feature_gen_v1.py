@@ -47,7 +47,11 @@ df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 
 # Cleaning up  cast names
-# Firstly, removing the on-screen character names from the list
+# Firstly, replacing the NaNs with empty lists
+df['Casts'].fillna(0, inplace = True)
+
+
+#Firstly, removing the on-screen character names from the list
 
 
 
