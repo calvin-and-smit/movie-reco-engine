@@ -68,6 +68,7 @@ if __name__ == '__main__':
     # Load raw data from production collection in the reco-engine database
     with db_connect.get_collection(db_cred_prod).find({}) as cursor:
         prod_data = list(cursor)
+
     # Define directors list for Director feat gen
     unique_directors = Counter()
     for line in prod_data:
@@ -75,6 +76,7 @@ if __name__ == '__main__':
             for dirctr in line['MI_Director']:
                 unique_directors[dirctr] += 1
     top_20_directors = list(item[0] for item in unique_directors.most_common(20))
+
     # Generate director feature
     feat_gen_directors(director_list=top_20_directors)
     # Generate Genre feature
