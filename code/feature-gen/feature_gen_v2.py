@@ -13,7 +13,7 @@ def feat_gen_directors(director_list: list):
     # Load variables from global
     global raw_data, db_to_write
     # Print status & record start time
-    print('\r\nFeature generation for Directors started')
+    print('\033[1;34m\r\nFeature generation for Directors started...\033[30m')
     start_time = time.time()
     # Check for empty input list
     if len(director_list) > 0:
@@ -36,10 +36,11 @@ def feat_gen_directors(director_list: list):
         # Bulk write to the database & pretty print result
         db_connect.get_collection(db_to_write).bulk_write(pending_jobs)
         # Feature generation complete & print status & runtime
-        print(f'\r\nFeature generation for Directors finished (runtime: {time.time() - start_time} seconds)\r\n')
+        print(f'\033[1;32m\r\nFeature generation for Directors finished (runtime: {time.time() - start_time} seconds)'
+              f'\r\n\033[30m')
     # If input list is empty
     else:
-        print('Bad director list')
+        print('\033[1;31mBad director list\033[30m')
     return
 
 
@@ -47,7 +48,7 @@ def feat_gen_genres():
     # Load variables from global
     global raw_data, db_to_write
     # Print status & record start time
-    print('\r\nFeature generation for Genres started')
+    print('\033[1;34m\r\nFeature generation for Genres started...\033[0;30m')
     start_time = time.time()
     # Create data_to_insert template
     dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in
@@ -64,7 +65,8 @@ def feat_gen_genres():
     # Bulk write to the database & pretty print result
     db_connect.get_collection(db_to_write).bulk_write(pending_jobs)
     # Feature generation complete & print status & runtime
-    print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
+    print(f'\033[1;32m\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)'
+          f'\r\n\033[30m')
     return
 
 
