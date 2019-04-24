@@ -51,7 +51,8 @@ def feat_gen_genres():
     # Generate Genre feature
     for row in prod_data:
         # Check Genre for each movie(row) & update data_to_insert
-        data_to_insert = deepcopy(dti_template).update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
+        data_to_insert = deepcopy(dti_template)
+        data_to_insert.update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
         # Insert data into features collection in the database
         db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True)
     # Feature generation complete & print status & runtime
