@@ -46,6 +46,9 @@ for i in range(len(df['_id'])):
 df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 
+# Cleaning up  cast names
+# Firstly, removing the on-screen character names from the list
+
 
 
 
