@@ -25,21 +25,17 @@ def feat_gen_directors(director_list: list):
             data_to_insert = deepcopy(dti_template)
             # Check directors one by one
             if 'MI_Director' in row:
-                for director in row['MI_Director']:
-                    if director in important_directors:
-                        data_to_insert[f"Dir_{director.replace(' ','-')}"] = 1
-                    continue
+                data_to_insert.update(dict((f"Dir_{director.replace(' ','-')}", 1) for director in row['MI_Director']
+                                           if director in director_list))
             # Insert data into features collection in the database
             # Option upsert=True is necessary; Equivalent to 'insert or update if exists'
-            db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
-                                                               {'$set': data_to_insert},
+            db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']}, {'$set': data_to_insert},
                                                                upsert=True)
         # Feature generation complete & print status & runtime
         print(f'\r\nFeature generation for Directors finished (runtime: {time.time() - start_time} seconds)\r\n')
     # If input list is empty
     else:
         print('Bad director list')
-        pass
     return
 
 
@@ -49,50 +45,37 @@ def feat_gen_genres():
     # Print status & record start time
     print('\r\nFeature generation for Genres started')
     start_time = time.time()
-    # Load unique genre codes from production dataset
-    gen_code_list = set(genre for row in prod_data for genre in row['MI_Genre'])
     # Create data_to_insert template
-    dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in gen_code_list)
+    dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in
+                        set(genre for row in prod_data for genre in row['MI_Genre']))
     # Generate Genre feature
     for row in prod_data:
-        # Check Genre for each movie(row) & insert result into the database
-        data_to_insert = deepcopy(dti_template)
-        for genre in row['MI_Genre']:
-            data_to_insert[f'Genre_{genre}'] = 1
+        # Check Genre for each movie(row) & update data_to_insert
+        data_to_insert = deepcopy(dti_template).update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
         # Insert data into features collection in the database
-        db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']},
-                                                           {'$set': data_to_insert},
-                                                           upsert=True)
+        db_connect.get_collection(db_cred_feat).update_one({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True)
     # Feature generation complete & print status & runtime
     print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
     return
 
 
 if __name__ == '__main__':
-
     # Define database details
     db_cred_prod = ['../../connection-details/db-reco-engine.credential',
                     'reco-engine', 'production']
     db_cred_feat = ['../../connection-details/db-reco-engine.credential',
                     'reco-engine', 'features']
-
     # Load raw data from production collection in the reco-engine database
-    with db_connect.get_collection(db_cred_prod).find({}) as db_cursor:
-        prod_data = list(db_cursor)
-
-    # Obtain unique directors as a Counter() object from production collection in the database
+    with db_connect.get_collection(db_cred_prod).find({}) as cursor:
+        prod_data = list(cursor)
+    # Define directors list for Director feat gen
     unique_directors = Counter()
     for line in prod_data:
         if 'MI_Director' in line:
             for dirctr in line['MI_Director']:
                 unique_directors[dirctr] += 1
-    # Define important directors
-    # (Using the top 20 most common directors extracted from database for now)
-    important_directors = list(item[0] for item in unique_directors.most_common(20))
-
+    top_20_directors = list(item[0] for item in unique_directors.most_common(20))
     # Generate director feature
-    feat_gen_directors(director_list=important_directors)
+    feat_gen_directors(director_list=top_20_directors)
     # Generate Genre feature
     feat_gen_genres()
-
-    pass
