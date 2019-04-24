@@ -5,7 +5,6 @@ sys.path.append('../tools')
 import time
 import db_connect
 from copy import deepcopy
-from pprint import pprint
 from pymongo import UpdateOne
 from collections import Counter
 
