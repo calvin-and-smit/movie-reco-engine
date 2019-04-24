@@ -11,7 +11,7 @@ from collections import Counter
 
 def feat_gen_directors(director_list: list):
     # Load variables from global
-    global prod_data, db_cred_feat
+    global raw_data, db_to_write
     # Print status & record start time
     print('\r\nFeature generation for Directors started')
     start_time = time.time()
@@ -22,7 +22,7 @@ def feat_gen_directors(director_list: list):
         # Define pending job list for bulk write
         pending_jobs = list()
         # Generate Directors feature
-        for row in prod_data:
+        for row in raw_data:
             # Use Deepcopy to create a 'deep' copy from dti_template
             # Reference: https://thispointer.com/python-how-to-copy-a-dictionary-shallow-copy-vs-deep-copy/
             data_to_insert = deepcopy(dti_template)
@@ -34,7 +34,7 @@ def feat_gen_directors(director_list: list):
             # (Option upsert=True is necessary; Equivalent to 'insert or update if exists')
             pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
         # Bulk write to the database & pretty print result
-        db_connect.get_collection(db_cred_feat).bulk_write(pending_jobs)
+        db_connect.get_collection(db_to_write).bulk_write(pending_jobs)
         # Feature generation complete & print status & runtime
         print(f'\r\nFeature generation for Directors finished (runtime: {time.time() - start_time} seconds)\r\n')
     # If input list is empty
@@ -45,24 +45,24 @@ def feat_gen_directors(director_list: list):
 
 def feat_gen_genres():
     # Load variables from global
-    global prod_data, db_cred_feat
+    global raw_data, db_to_write
     # Print status & record start time
     print('\r\nFeature generation for Genres started')
     start_time = time.time()
     # Create data_to_insert template
     dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in
-                        set(genre for row in prod_data for genre in row['MI_Genre']))
+                        set(genre for row in raw_data for genre in row['MI_Genre']))
     # Define pending job list for bulk write
     pending_jobs = list()
     # Generate Genre feature
-    for row in prod_data:
+    for row in raw_data:
         # Check Genre for each movie(row) & update data_to_insert
         data_to_insert = deepcopy(dti_template)
         data_to_insert.update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
         # Append job into pending job list
         pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
     # Bulk write to the database & pretty print result
-    db_connect.get_collection(db_cred_feat).bulk_write(pending_jobs)
+    db_connect.get_collection(db_to_write).bulk_write(pending_jobs)
     # Feature generation complete & print status & runtime
     print(f'\r\nFeature generation for Genres finished (runtime: {time.time() - start_time} seconds)\r\n')
     return
@@ -70,17 +70,17 @@ def feat_gen_genres():
 
 if __name__ == '__main__':
     # Define database details
-    db_cred_prod = ['../../connection-details/db-reco-engine.credential',
-                    'reco-engine', 'production']
-    db_cred_feat = ['../../connection-details/db-reco-engine.credential',
-                    'reco-engine', 'features']
+    db_to_read = ['../../connection-details/db-reco-engine.credential',
+                  'reco-engine', 'production']
+    db_to_write = ['../../connection-details/db-reco-engine.credential',
+                   'reco-engine', 'features']
+
     # Load raw data from production collection in the reco-engine database
-    with db_connect.get_collection(db_cred_prod).find({}) as cursor:
-        prod_data = list(cursor)
+    raw_data = list(db_connect.get_collection(db_to_read).find({}))
 
     # Define directors list for Director feat gen
     unique_directors = Counter()
-    for line in prod_data:
+    for line in raw_data:
         if 'MI_Director' in line:
             for dirctr in line['MI_Director']:
                 unique_directors[dirctr] += 1
@@ -88,5 +88,6 @@ if __name__ == '__main__':
 
     # Generate director feature
     feat_gen_directors(director_list=top_20_directors)
+
     # Generate Genre feature
     feat_gen_genres()
