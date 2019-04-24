@@ -47,10 +47,6 @@ df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 
 
-# Studio
-# processing the studio feature
-
-
 
 
 #df['MI_Rating'].value_counts()
