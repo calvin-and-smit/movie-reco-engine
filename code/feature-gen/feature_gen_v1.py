@@ -56,10 +56,10 @@ df['Casts_new'] = 0
 
 for i in range(len(df['_id'])):
     if df['Casts'][i] != 0:
-        inner_list = list()
+        cast_per_movie = list()
         for j in range(len(df['Casts'][i])):
-            inner_list.append(df['Casts'][i][j][0])
-        df['Casts_new'][i] = inner_list
+            cast_per_movie.append(df['Casts'][i][j][0])
+        df['Casts_new'][i] = cast_per_movie
 
 
 
