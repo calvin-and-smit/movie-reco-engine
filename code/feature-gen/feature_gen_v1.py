@@ -50,16 +50,16 @@ df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 # Firstly, replacing the NaNs with 0s
 df['Casts'].fillna(0, inplace = True)
 
-outer_list = list()
-#Secondly, removing the on-screen character names from the list
+# Secondly, removing the on-screen character names from the list
+# and also adding the new resulting cast list to the dataframe
+df['Casts_new'] = 0
+
 for i in range(len(df['_id'])):
     if df['Casts'][i] != 0:
         inner_list = list()
         for j in range(len(df['Casts'][i])):
             inner_list.append(df['Casts'][i][j][0])
-        outer_list.append(inner_list)
-    else:
-        outer_list.append(list())
+        df['Casts_new'][i] = inner_list
 
 
 
