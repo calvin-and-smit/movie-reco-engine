@@ -52,14 +52,14 @@ df['Casts'].fillna(0, inplace = True)
 
 # Secondly, removing the on-screen character names from the list
 # and also adding the new resulting cast list to the dataframe
-df['Casts_new'] = 0
+df['Updated_Cast'] = 0
 
 for i in range(len(df['_id'])):
     if df['Casts'][i] != 0:
         cast_per_movie = list()
         for j in range(len(df['Casts'][i])):
             cast_per_movie.append(df['Casts'][i][j][0])
-        df['Casts_new'][i] = cast_per_movie
+        df['Updated_Cast'][i] = cast_per_movie
 
 
 
