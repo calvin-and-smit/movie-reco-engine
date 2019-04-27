@@ -3,3 +3,4 @@
 *.pyc
 scraping-test.py
 playground.py
+connection-details/db-reco-engine.credential
