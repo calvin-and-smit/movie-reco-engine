@@ -72,10 +72,10 @@ def feat_gen_genres():
 
 if __name__ == '__main__':
     # Define database details
-    db_to_read = ['../../connection-details/FreeAtlas1.credential',
-                  'reco-engine-1', 'RawData']
-    db_to_write = ['../../connection-details/FreeAtlas1.credential',
-                   'reco-engine-1', 'Features']
+    db_to_read = ['../../connection-details/db-reco-engine.credential',
+                  'reco-engine', 'production']
+    db_to_write = ['../../connection-details/db-reco-engine.credential',
+                   'reco-engine', 'features']
 
     # Load raw data from production collection in the reco-engine database
     raw_data = list(db_connect.get_collection(db_to_read).find({}))
