@@ -11,8 +11,8 @@ if __name__ == '__main__':
     genre_codes_fpath = '../dependencies/rt_genre_codes'
 
     # Define database details
-    db_credential = ['../connection-details/db-reco-engine.credential',
-                     'reco-engine', 'test']
+    db_credential = ['../connection-details/FreeAtlas1.credential',
+                     'reco-engine-1', 'RawData']
 
     # Start scraping procedures
     scrape_with_mp(iul_fpath=initial_urls_fpath,
