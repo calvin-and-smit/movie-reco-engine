@@ -52,16 +52,17 @@ def feat_gen_genres():
     start_time = time.time()
     # Create data_to_insert template
     dti_template = dict((f'Genre_{gen_code}', 0) for gen_code in
-                        set(genre for row in raw_data for genre in row['MI_Genre']))
+                        set(genre for row in raw_data if 'MI_Genre' in row for genre in row['MI_Genre']))
     # Define pending job list for bulk write
     pending_jobs = list()
     # Generate Genre feature
     for row in raw_data:
-        # Check Genre for each movie(row) & update data_to_insert
-        data_to_insert = deepcopy(dti_template)
-        data_to_insert.update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
-        # Append job into pending job list
-        pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
+        if 'MI_Genre' in row:
+            # Check Genre for each movie(row) & update data_to_insert
+            data_to_insert = deepcopy(dti_template)
+            data_to_insert.update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
+            # Append job into pending job list
+            pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
     # Bulk write to the database & pretty print result
     db_connect.get_collection(db_to_write).bulk_write(pending_jobs)
     # Feature generation complete & print status & runtime
