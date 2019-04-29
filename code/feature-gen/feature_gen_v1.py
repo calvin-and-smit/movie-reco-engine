@@ -65,13 +65,6 @@ for i in range(len(df['_id'])):
 
 
 
-# logic to be implemented:
-#   - generate list of most popular/successful cast and directors
-#   - pick the top 'n' from the list
-#   - use this list to populate the dummy variables for the cast and director
-        
-# Post that,
-#   - Need to do the same for actor-director pair
 
 
 
