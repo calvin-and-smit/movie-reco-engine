@@ -1,5 +1,5 @@
 
-# Manipulating data
+# Generating features
 
 
 # Set working directory
