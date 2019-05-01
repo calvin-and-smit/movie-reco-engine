@@ -57,12 +57,12 @@ def feat_gen_genres():
     pending_jobs = list()
     # Generate Genre feature
     for row in raw_data:
+        # Check Genre for each movie(row) & update data_to_insert
+        data_to_insert = deepcopy(dti_template)
         if 'MI_Genre' in row:
-            # Check Genre for each movie(row) & update data_to_insert
-            data_to_insert = deepcopy(dti_template)
             data_to_insert.update(dict((f'Genre_{genre}', 1) for genre in row['MI_Genre']))
-            # Append job into pending job list
-            pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
+        # Append job into pending job list
+        pending_jobs.append(UpdateOne({'_id': row['_id']}, {'$set': data_to_insert}, upsert=True))
     # Bulk write to the database & pretty print result
     db_connect.get_collection(db_to_write).bulk_write(pending_jobs)
     # Feature generation complete & print status & runtime
@@ -74,9 +74,9 @@ def feat_gen_genres():
 if __name__ == '__main__':
     # Define database details
     db_to_read = ['../../connection-details/db-reco-engine.credential',
-                  'reco-engine', 'production']
+                  'reco-engine', 'test']
     db_to_write = ['../../connection-details/db-reco-engine.credential',
-                   'reco-engine', 'features']
+                   'reco-engine', 'test']
 
     # Load raw data from production collection in the reco-engine database
     raw_data = list(db_connect.get_collection(db_to_read).find({}))
