@@ -29,6 +29,10 @@ df = pd.DataFrame(list(col.find({})))
 #type(df['Audience_Score_ur'][1])
 
 
+# Audience Score
+# Converting str into value between 0 and 1
+df['Audience_Score'] = df['Audience_Score'].str.replace('%', '')
+
 
 # Franchise
 # Replacing NaNs with 0 first 
