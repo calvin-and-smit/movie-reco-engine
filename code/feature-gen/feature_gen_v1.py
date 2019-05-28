@@ -42,6 +42,11 @@ df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), erro
 # Runtime
 # Creating a new variable 'Runtime' and applying minmax scaling
 df['Runtime'] = pd.to_numeric(df['MI_Runtime_1'].str.replace(' minutes', ''), errors = 'coerce')
+for i in range(len(df['_id'])):
+    if df['Runtime'][i] > 300:
+        df['Runtime'][i] = 300
+
+
 
 
 # Franchise
