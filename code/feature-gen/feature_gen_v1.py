@@ -40,7 +40,7 @@ df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), erro
 
 
 # Runtime
-# Converting str into value between 0 and 1
+# Creating a new variable 'Runtime' and applying minmax scaling
 df['Runtime'] = pd.to_numeric(df['MI_Runtime_1'].str.replace(' minutes', ''), errors = 'coerce')
 
 
