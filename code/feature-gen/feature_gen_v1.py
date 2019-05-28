@@ -41,7 +41,7 @@ df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), erro
 
 # Runtime
 # Converting str into value between 0 and 1
-df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), errors = 'coerce')/100
+df['Runtime'] = pd.to_numeric(df['MI_Runtime_1'].str.replace(' minutes', ''), errors = 'coerce')
 
 
 # Franchise
