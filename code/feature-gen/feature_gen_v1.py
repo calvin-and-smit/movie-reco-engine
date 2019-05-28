@@ -48,6 +48,9 @@ for i in range(len(df['_id'])):
 
 runtime_max = max(df['Runtime'])
 runtime_min = min(df['Runtime'])
+df['Scaled_Runtime'] = 0.000
+for i in range(len(df['_id'])):
+    df['Scaled_Runtime'][i] = (df['Runtime'][i] - runtime_min)/(runtime_max - runtime_min)
 
 
 # Franchise
