@@ -92,7 +92,7 @@ for i in range(len(df['_id'])):
 ########## Idea: Similar Description ##########
 # Ask for 3 movies that user has seen recently as input
 # Find a movie description closest from all 3
-# 
+# Dice's coefficient can be used to find similarity. or even cosine similarity of tf-idf
 ################################################
         
 ################################################################################################
