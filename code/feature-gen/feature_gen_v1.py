@@ -31,7 +31,7 @@ df = pd.DataFrame(list(col.find({})))
 
 # Audience Score
 # Converting str into value between 0 and 1
-df['Audience_Score'] = df['Audience_Score'].str.replace('%', '')
+df['Audience_Score'] = pd.to_numeric(df['Audience_Score'].str.replace('%', ''), errors = 'coerce')/100
 
 
 # Franchise
