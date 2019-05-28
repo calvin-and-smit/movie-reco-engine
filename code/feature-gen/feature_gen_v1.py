@@ -46,7 +46,8 @@ for i in range(len(df['_id'])):
     if df['Runtime'][i] > 300:
         df['Runtime'][i] = 300
 
-
+runtime_max = max(df['Runtime'])
+runtime_min = min(df['Runtime'])
 
 
 # Franchise
