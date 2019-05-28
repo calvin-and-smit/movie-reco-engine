@@ -34,6 +34,11 @@ df = pd.DataFrame(list(col.find({})))
 df['Audience_Score'] = pd.to_numeric(df['Audience_Score'].str.replace('%', ''), errors = 'coerce')/100
 
 
+# Tomatometer
+# Converting str into value between 0 and 1
+df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), errors = 'coerce')/100
+
+
 # Franchise
 # Replacing NaNs with 0 first 
 df['Franchise'].fillna(0, inplace=True)
