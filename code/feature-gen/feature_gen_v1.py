@@ -78,11 +78,11 @@ df['Casts'].fillna(0, inplace = True)
 df['Updated_Cast'] = 0
 
 for i in range(len(df['_id'])):
-    if df['Casts'][i] != 0:
+    if df.loc[i, 'Casts'] != 0:
         cast_per_movie = list()
         for j in range(len(df['Casts'][i])):
             cast_per_movie.append(df['Casts'][i][j][0])
-        df['Updated_Cast'][i] = cast_per_movie
+        df.loc[i, 'Updated_Cast'] = cast_per_movie
 
 
 
