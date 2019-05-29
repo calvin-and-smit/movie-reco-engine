@@ -43,14 +43,14 @@ df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), erro
 # Creating a new variable 'Runtime' and applying minmax scaling
 df['Runtime'] = pd.to_numeric(df['MI_Runtime_1'].str.replace(' minutes', ''), errors = 'coerce')
 for i in range(len(df['_id'])):
-    if df['Runtime'][i] > 300:
-        df['Runtime'][i] = 300
+    if df.loc[i, 'Runtime'] > 300:
+        df.loc[i, 'Runtime'] = 300
 
 runtime_max = max(df['Runtime'])
 runtime_min = min(df['Runtime'])
 df['Scaled_Runtime'] = 0.000
 for i in range(len(df['_id'])):
-    df['Scaled_Runtime'][i] = (df['Runtime'][i] - runtime_min)/(runtime_max - runtime_min)
+    df.loc[i, 'Scaled_Runtime'] = (df.loc[i, 'Runtime'] - runtime_min)/(runtime_max - runtime_min)
 
 
 # Franchise
@@ -58,8 +58,8 @@ for i in range(len(df['_id'])):
 df['Franchise'].fillna(0, inplace=True)
 # Replacing non-0 values with 1 since they are a part of a franchise
 for i in range(len(df['_id'])):
-    if df['Franchise'][i] != 0:
-        df['Franchise'][i] = 1
+    if df.loc[i, 'Franchise'] != 0:
+        df.loc[i, 'Franchise'] = 1
         
 #df['Franchise'].value_counts()
 
