@@ -82,7 +82,7 @@ for i in range(len(df['_id'])):
         cast_per_movie = list()
         for j in range(len(df['Casts'][i])):
             cast_per_movie.append(df['Casts'][i][j][0])
-        df.loc[i, 'Updated_Cast'] = cast_per_movie
+        df['Updated_Cast'][i] = cast_per_movie
 
 
 
