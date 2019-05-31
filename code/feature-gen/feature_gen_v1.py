@@ -92,7 +92,7 @@ df_final = pd.concat([df, df_temp], axis = 1)
 
 # Keeping only the required columns
 # Defining the variable cols to hold the required columns
-cols = []
+cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime', '']
 
 
 
@@ -105,6 +105,7 @@ cols = []
 # Tomato_Meter - done
 # Scaled_Runtime - done
 # Genre 'dummy
+# Need to bring in cast as well 
 # 
 # 
 # =============================================================================
