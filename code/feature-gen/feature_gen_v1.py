@@ -91,7 +91,7 @@ for i in range(len(df['_id'])):
 df_temp = pd.get_dummies(df['MI_Genre'].apply(pd.Series).stack(), prefix='Genre').sum(level=0)
 
 
-
+c = pd.concat([a, b], axis=1)
 
 # =============================================================================
 # 
