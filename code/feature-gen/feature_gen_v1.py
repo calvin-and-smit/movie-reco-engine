@@ -92,7 +92,28 @@ df_final = pd.concat([df, df_temp], axis = 1)
 
 # Keeping only the required columns
 # Defining the variable cols to hold the required columns
-cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime', '']
+cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime', 
+        'Genre_1.0', 
+        'Genre_2.0', 
+        'Genre_3.0', 
+        'Genre_4.0', 
+        'Genre_5.0', 
+        'Genre_6.0', 
+        'Genre_7.0', 
+        'Genre_8.0', 
+        'Genre_9.0', 
+        'Genre_10.0', 
+        'Genre_11.0', 
+        'Genre_12.0', 
+        'Genre_13.0', 
+        'Genre_14.0', 
+        'Genre_15.0', 
+        'Genre_16.0', 
+        'Genre_17.0', 
+        'Genre_18.0', 
+        'Genre_19.0', 
+        'Genre_20.0', 
+        'Genre_21.0']
 
 
 
