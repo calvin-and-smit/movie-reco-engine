@@ -88,8 +88,8 @@ for i in range(len(df['_id'])):
 # Creating dummy variables for Genres
 # Using a temporary df to hold the dummies
 
-df_temp = pd.get_dummies(df['MI_Genre'].apply(pd.Series).stack(), prefix='Genre').sum(level=0)
-
+df_temp = pd.get_dummies(df['MI_Genre'].apply(pd.Series).stack(), prefix='Genre').sum(level = 0)
+df_final = pd.concat([df, df_temp], axis = 1)
 
 c = pd.concat([a, b], axis=1)
 
