@@ -85,7 +85,10 @@ for i in range(len(df['_id'])):
         df.loc[i, 'Updated_Cast'] = ', '.join(cast_per_movie)
 
 
+# Creating dummy variables for Genres
+# Using a temporary df to hold the dummies
 
+df_temp = pd.get_dummies(df['MI_Genre'].apply(pd.Series).stack(), prefix='Genre').sum(level=0)
 
 
 
