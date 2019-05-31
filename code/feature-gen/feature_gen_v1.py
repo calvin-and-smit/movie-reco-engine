@@ -86,14 +86,18 @@ for i in range(len(df['_id'])):
 
 
 
+
+
+
+
 # =============================================================================
 # 
 # # variables for knn
-# Audience_Score
-# Franchise
+# Audience_Score - done
+# Franchise - done
 # MI_Rating 'dummy??????????
-# Tomato_Meter
-# Scaled_Runtime
+# Tomato_Meter - done
+# Scaled_Runtime - done
 # Genre 'dummy
 # 
 # 
