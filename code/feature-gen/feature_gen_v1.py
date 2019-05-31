@@ -91,7 +91,8 @@ df_temp = pd.get_dummies(df['MI_Genre'].apply(pd.Series).stack(), prefix='Genre'
 df_final = pd.concat([df, df_temp], axis = 1)
 
 # Keeping only the required columns
-
+# Defining the variable cols to hold the required columns
+cols = []
 
 
 
