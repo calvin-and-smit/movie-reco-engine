@@ -117,7 +117,7 @@ cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime',
 
 df_knn = df_final[cols]
 
-
+# function for knn
 
 # =============================================================================
 # 
