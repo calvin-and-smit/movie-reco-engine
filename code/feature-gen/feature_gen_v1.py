@@ -124,6 +124,7 @@ df_knn = df_final[cols]
 # function to calculate distance between 2 instances
 # function to return top 5 neighbors depending on the input
 # https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
+# **** this is python 2 ****
 
 
 # =============================================================================
