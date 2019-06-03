@@ -130,7 +130,7 @@ df_knn = df_final[cols]
 '''
 
 def get_dist(df_record1, df_record2):
-    return 
+    return math.sqrt(sum((df_record1 - df_record2)**2))
 
 '''
 
