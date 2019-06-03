@@ -126,7 +126,11 @@ df_knn = df_final[cols]
 # https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
 # **** this is python 2 ****
 
+'''
 
+
+
+'''
 
 
 
