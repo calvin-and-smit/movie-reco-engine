@@ -121,6 +121,10 @@ df_knn = df_final[cols]
 # sckit-learn algo here
 
 # custom knn from scratch
+# function to calculate distance between 2 instances
+# function to return top 5 neighbors depending on the input
+# https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
+
 
 # =============================================================================
 # 
