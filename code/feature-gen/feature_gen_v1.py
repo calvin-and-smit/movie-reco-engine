@@ -131,6 +131,17 @@ df_knn = df_final[cols]
 
 def get_dist(df_record1, df_record2):
     return math.sqrt(sum((df_record1 - df_record2)**2))
+    
+    
+def get_neighbors(test_instance, df, k):
+    length_df = len(df)
+    distances = list()
+    for i in range(length_df):
+        distances.append(get_dist(test_instance, df.iloc[i]))
+    
+    #sort distances
+    #return top k instances
+    
 
 '''
 
