@@ -7,6 +7,7 @@ import sys
 sys.path.append('../scraping')
 sys.path.append('../tools')
 import db_connect
+import math
 
 import pandas as pd
 import numpy as np
@@ -128,7 +129,8 @@ df_knn = df_final[cols]
 
 '''
 
-
+def get_dist(df_record1, df_record2):
+    return 
 
 '''
 
