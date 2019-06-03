@@ -118,6 +118,9 @@ cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime',
 df_knn = df_final[cols]
 
 # function for knn
+# sckit-learn algo here
+
+# custom knn from scratch
 
 # =============================================================================
 # 
