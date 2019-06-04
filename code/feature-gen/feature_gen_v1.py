@@ -129,7 +129,7 @@ df_knn = df_final[cols]
 # https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
 # **** this is python 2 ****
 
-'''
+
 
 def get_dist(df_record1, df_record2):
     return math.sqrt(sum((df_record1 - df_record2)**2))
@@ -145,9 +145,9 @@ def get_neighbors(test_instance, df, k):
     #return top k instances
     
 
-'''
 
 
+d = get_neighbors(test_instance, df_knn,1)
 
 
 # =============================================================================
