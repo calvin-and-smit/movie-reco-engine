@@ -148,7 +148,18 @@ def get_neighbors(test_instance, df, k):
 
 test_instance = df_knn.iloc[0]
 d = get_neighbors(test_instance, df_knn,1)
-d.sort(reverse=True)
+#d.sort(reverse=True)
+
+
+arr = np.array(d)
+indices = list(arr.argsort()[:3])
+
+for i in indices:
+    print(df.loc[i, 'Movie_Name'])
+
+
+
+
 
 # =============================================================================
 # 
