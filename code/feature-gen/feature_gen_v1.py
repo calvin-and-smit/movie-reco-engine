@@ -140,7 +140,11 @@ def get_neighbors(test_instance, df, k):
     distances = list()
     for i in range(length_df):
         distances.append(get_dist(test_instance, df.iloc[i]))
-    return distances
+    
+    indices = list(np.array(distances).argsort()[:3])
+    
+    
+    return indices
     #sort distances
     #return top k instances
     
