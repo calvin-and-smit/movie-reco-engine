@@ -42,6 +42,25 @@ df['Tomato_Meter'].fillna('0', inplace=True)
 df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), errors = 'coerce')/100
 
 
+# Movie Year
+# Creating a new variable 'Movie_Yr' and applying minmax scaling
+df['Movie_Yr'] = 1900
+for i in range(len(df['_id'])):
+    try:
+        df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_In_Theaters_1'][-4:], errors = 'coerce')
+    except:
+        try:
+            df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_On_Disc_1'][-4:], errors = 'coerce')
+        except:
+            df.loc[i, 'Movie_Yr'] = 1900
+         
+yr_max = max(df['Movie_Yr'])
+yr_min = min(df['Movie_Yr'])
+df['Scaled_Movie_Yr'] = 0.000
+for i in range(len(df['_id'])):
+    df.loc[i, 'Scaled_Movie_Yr'] = (df.loc[i, 'Movie_Yr'] - yr_min)/(yr_max - yr_min)
+
+
 # Runtime
 # Creating a new variable 'Runtime' and applying minmax scaling
 df['Runtime'] = pd.to_numeric(df['MI_Runtime_1'].str.replace(' minutes', ''), errors = 'coerce')
@@ -162,26 +181,7 @@ for i in ind:
 
 
 
-df['Movie_Yr'] = 1900
-
-for i in range(len(df['_id'])):
-    try:
-        df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_In_Theaters_1'][-4:], errors = 'coerce')
-    except:
-        try:
-            df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_On_Disc_1'][-4:], errors = 'coerce')
-        except:
-            df.loc[i, 'Movie_Yr'] = 1900
-         
-yr_max = max(df['Movie_Yr'])
-yr_min = min(df['Movie_Yr'])
-df['Scaled_Movie_Yr'] = 0.000
-for i in range(len(df['_id'])):
-    df.loc[i, 'Scaled_Movie_Yr'] = (df.loc[i, 'Movie_Yr'] - yr_min)/(yr_max - yr_min)
-
-
-
-df['Movie_Yr'].value_counts()    
+ 
     
     
 
