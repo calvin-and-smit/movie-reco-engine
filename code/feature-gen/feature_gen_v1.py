@@ -162,10 +162,6 @@ for i in ind:
 #   - add year of release
 
 
-a = df.loc[0:10]
-
-a.loc[1, 'MI_In_Theaters_1'][:-4]
-MI_On_Disc_1
 
 df['Movie_Yr'] = '1900'
 
@@ -173,11 +169,19 @@ for i in range(len(df['_id'])):
     try:
         df.loc[i, 'Movie_Yr'] = df.loc[i, 'MI_In_Theaters_1'][-4:]
     except:
-        df.loc[i, 'Movie_Yr'] = 'NA'
+        try:
+            df.loc[i, 'Movie_Yr'] = df.loc[i, 'MI_On_Disc_1'][-4:]
+        except:
+            df.loc[i, 'Movie_Yr'] = 'NA'
+            
+
+    
+
+
+
     
     
-    
-#df['Franchise'].value_counts()    
+#df['Movie_Yr'].value_counts()    
     
     
 
