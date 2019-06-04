@@ -157,7 +157,9 @@ for i in ind:
     print(df.loc[i, 'Movie_Name'])
 
 
-
+# add some context of the movie
+#   - maybe extract topics from description and then compare?
+#   - add year of release
 
 
 
