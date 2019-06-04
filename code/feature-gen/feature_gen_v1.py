@@ -153,8 +153,8 @@ recos = 4
 test_instance = df_knn.iloc[test_index]
 ind = get_neighbors(test_instance, df_knn, recos)
 
-print('Input:' + df.loc[test_index, 'Movie_Name'])
-print('Recommendations:')
+print('\nInput:' + df.loc[test_index, 'Movie_Name'])
+print('\nRecommendations:')
 for i in ind:
     print(df.loc[i, 'Movie_Name'])
 
