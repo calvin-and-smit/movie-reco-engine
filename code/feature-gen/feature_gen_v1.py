@@ -79,7 +79,6 @@ df['Casts'].fillna(0, inplace = True)
 # Secondly, removing the on-screen character names from the list
 # and also adding the new resulting cast list to the dataframe
 df['Updated_Cast'] = 0
-
 for i in range(len(df['_id'])):
     if df.loc[i, 'Casts'] != 0:
         cast_per_movie = list()
@@ -163,25 +162,19 @@ for i in ind:
 
 
 
-df['Movie_Yr'] = '1900'
+df['Movie_Yr'] = 1900
 
 for i in range(len(df['_id'])):
     try:
-        df.loc[i, 'Movie_Yr'] = df.loc[i, 'MI_In_Theaters_1'][-4:]
+        df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_In_Theaters_1'][-4:], errors = 'coerce')
     except:
         try:
-            df.loc[i, 'Movie_Yr'] = df.loc[i, 'MI_On_Disc_1'][-4:]
+            df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_On_Disc_1'][-4:], errors = 'coerce')
         except:
-            df.loc[i, 'Movie_Yr'] = '1900'
-            
+            df.loc[i, 'Movie_Yr'] = 1900
+         
 
-    
-
-
-
-    
-    
-#df['Movie_Yr'].value_counts()    
+df['Movie_Yr'].value_counts()    
     
     
 
