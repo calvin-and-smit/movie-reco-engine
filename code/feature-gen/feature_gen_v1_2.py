@@ -164,7 +164,7 @@ def get_neighbors(test_instance, df, k):
     return indices
     
 
-test_index = 1126
+test_index = 10
 recos = 4
 test_instance = df_knn_v2.iloc[test_index]
 ind = get_neighbors(test_instance, df_knn_v2, recos)
