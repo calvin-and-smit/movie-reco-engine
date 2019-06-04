@@ -172,7 +172,7 @@ for i in range(len(df['_id'])):
         try:
             df.loc[i, 'Movie_Yr'] = df.loc[i, 'MI_On_Disc_1'][-4:]
         except:
-            df.loc[i, 'Movie_Yr'] = 'NA'
+            df.loc[i, 'Movie_Yr'] = '1900'
             
 
     
