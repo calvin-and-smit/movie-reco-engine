@@ -148,16 +148,13 @@ def get_neighbors(test_instance, df, k):
     #return top k instances
     
 
+test_index = 0
+test_instance = df_knn.iloc[test_index]
+ind = get_neighbors(test_instance, df_knn, 4)
 
-test_instance = df_knn.iloc[0]
-d = get_neighbors(test_instance, df_knn, 4)
-#d.sort(reverse=True)
-
-
-arr = np.array(d)
-indices = list(arr.argsort()[:3])
-
-for i in indices:
+print('Input:' + df.loc[test_index, 'Movie_Name'])
+print('Recommendations:')
+for i in ind:
     print(df.loc[i, 'Movie_Name'])
 
 
