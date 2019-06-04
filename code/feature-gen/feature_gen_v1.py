@@ -148,7 +148,7 @@ def get_neighbors(test_instance, df, k):
 
 test_instance = df_knn.iloc[0]
 d = get_neighbors(test_instance, df_knn,1)
-
+d.sort(reverse=True)
 
 # =============================================================================
 # 
