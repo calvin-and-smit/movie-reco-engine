@@ -32,11 +32,13 @@ df = pd.DataFrame(list(col.find({})))
 
 # Audience Score
 # Converting str into value between 0 and 1
+df['Audience_Score'].fillna(0, inplace=True)
 df['Audience_Score'] = pd.to_numeric(df['Audience_Score'].str.replace('%', ''), errors = 'coerce')/100
 
 
 # Tomatometer
 # Converting str into value between 0 and 1
+df['Tomato_Meter'].fillna(0, inplace=True)
 df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), errors = 'coerce')/100
 
 
