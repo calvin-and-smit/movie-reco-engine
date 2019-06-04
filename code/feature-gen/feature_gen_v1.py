@@ -148,9 +148,10 @@ def get_neighbors(test_instance, df, k):
     #return top k instances
     
 
-test_index = 0
+test_index = 55
+recos = 4
 test_instance = df_knn.iloc[test_index]
-ind = get_neighbors(test_instance, df_knn, 4)
+ind = get_neighbors(test_instance, df_knn, recos)
 
 print('Input:' + df.loc[test_index, 'Movie_Name'])
 print('Recommendations:')
