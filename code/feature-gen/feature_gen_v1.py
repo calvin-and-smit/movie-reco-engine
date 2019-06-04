@@ -173,6 +173,13 @@ for i in range(len(df['_id'])):
         except:
             df.loc[i, 'Movie_Yr'] = 1900
          
+yr_max = max(df['Movie_Yr'])
+yr_min = min(df['Movie_Yr'])
+df['Scaled_Movie_Yr'] = 0.000
+for i in range(len(df['_id'])):
+    df.loc[i, 'Scaled_Movie_Yr'] = (df.loc[i, 'Movie_Yr'] - yr_min)/(yr_max - yr_min)
+
+
 
 df['Movie_Yr'].value_counts()    
     
