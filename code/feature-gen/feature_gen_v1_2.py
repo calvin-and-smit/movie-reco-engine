@@ -113,7 +113,7 @@ df_final = pd.concat([df, df_temp], axis = 1)
 
 # Keeping only the required columns
 # Defining the variable cols to hold the required columns
-cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime', 'Scaled_Movie_Yr',
+cols_v2 = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime', 'Scaled_Movie_Yr',
         'Genre_1.0', 
         'Genre_2.0', 
         'Genre_3.0', 
@@ -136,7 +136,7 @@ cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime', 'Scaled
         'Genre_20.0', 
         'Genre_21.0']
 
-df_knn = df_final[cols]
+df_knn_v2 = df_final[cols_v2]
 
 # function for knn
 # sckit-learn algo here
@@ -166,8 +166,8 @@ def get_neighbors(test_instance, df, k):
 
 test_index = 1126
 recos = 4
-test_instance = df_knn.iloc[test_index]
-ind = get_neighbors(test_instance, df_knn, recos)
+test_instance = df_knn_v2.iloc[test_index]
+ind = get_neighbors(test_instance, df_knn_v2, recos)
 
 print('\nInput:' + df.loc[test_index, 'Movie_Name'])
 print('\nRecommendations:')
