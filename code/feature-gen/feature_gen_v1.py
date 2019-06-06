@@ -175,6 +175,11 @@ for i in ind:
     print(df.loc[i, 'Movie_Name'])
 
 
+# add a way to extract index from Movie Name
+    # Need to have movie name, movie url, and index stored on the server for quick lookup
+
+
+
 # add some context of the movie
 #   - maybe extract topics from description and then compare?
 
