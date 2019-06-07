@@ -203,9 +203,12 @@ for i in test[0].replace(' ', '').split(','):
 
 #####################
     
+m1 = ['Johnny Depp, Brad Pitt, George Soros, Bono']
+m2 = ['Julia Roberts, Liv Tyler, George Soros, Bono']
+m3 = ['Tom Hanks, Adam Sand, Leo Messi, Suarez']
+m4 = ['Johnny Depp, Adam Sand, George Soros, Liv Tyler']
 
-
-
+m = [m1, m2, m3, m4]
 
 
 
