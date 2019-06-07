@@ -194,8 +194,8 @@ test = ['Brad Pitt, George Clooney']
 train = ['Johnny Depp, Brad Pitt, George Soros, Bono']
 
 
-for i in test[0].split(','):
-    print(i.strip())
+for i in test[0].replace(' ', '').split(','):
+    print(i in train[0].replace(' ', '').split(','))
 
 
 # =============================================================================
