@@ -178,6 +178,8 @@ for i in ind:
 
 # find a way to have something like an actor index
     # this would look for actors in test and check against each actor list in train
+    # what about top 10 actors? and each actor present has 0.1 weight
+# Check if same director????
 
 # add a way to extract index from Movie Name
     # Need to have movie name, movie url, and index stored on the server for quick lookup
