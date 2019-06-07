@@ -190,10 +190,12 @@ for i in ind:
 #   - maybe extract topics from description and then compare?
 
 
+test = ['Brad Pitt, George Clooney']
+train = ['Johnny Depp, Brad Pitt, George Soros, Bono']
 
- 
-    
-    
+
+for i in test[0].split(','):
+    print(i.strip())
 
 
 # =============================================================================
