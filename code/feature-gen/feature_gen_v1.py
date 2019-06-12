@@ -210,7 +210,7 @@ m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
 
 m = pd.DataFrame({'Movie_Name':['m1', 'm2', 'm3', 'm4'], 'Cast':[m1, m2, m3, m4]})
 
-m_tuple = (m['Movie_Name'])
+m_tuple = tuple(m['Movie_Name'])
 mov_mat = pd.DataFrame({m_tuple:0})
 
 
