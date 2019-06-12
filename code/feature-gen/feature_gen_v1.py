@@ -214,6 +214,7 @@ m = pd.DataFrame({'Movie_Name':['m1', 'm2', 'm3', 'm4'], 'Cast':[m1, m2, m3, m4]
 mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
 #mov_mat = mov_mat.fillna(0)
 
+c_list = m['Cast']
 m_list = m['Movie_Name']
 
 for i in m_list:
@@ -239,9 +240,13 @@ for i in m_list:
             temp_m.loc[j, i] = temp_sum/len(internal_cast)
             internal_row_counter += 1
             
-            
+    print('\n') 
+    print('\n')        
     external_row_counter += 1
     mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
+    print(mov_mat)
+    print('\n') 
+    print('\n')  
 
 
 # =============================================================================
