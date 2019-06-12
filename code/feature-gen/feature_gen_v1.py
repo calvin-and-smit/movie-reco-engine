@@ -210,11 +210,10 @@ m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
 
 m = pd.DataFrame({'Movie_Name':['m1', 'm2', 'm3', 'm4'], 'Cast':[m1, m2, m3, m4]})
 
-'''
-for movie in m:
-    for cast in movie[0].replace(' ', '').split(','):
-        print(cast in train[0].replace(' ', '').split(','))
-'''
+
+
+
+
 
 
 # =============================================================================
