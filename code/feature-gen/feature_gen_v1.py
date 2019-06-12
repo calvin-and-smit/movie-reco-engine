@@ -217,14 +217,16 @@ mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
 c_list = m['Cast']
 m_list = m['Movie_Name']
 
+external_row_counter = 0
 for i in m_list:
     temp_m = pd.DataFrame(index=m_list, columns=[i])
-    external_row_counter = 0
+    
     external_cast = m.loc[external_row_counter, 'Cast'].replace(' ', '').split(',')
     print(external_cast)
     print('\n')
+    internal_row_counter = 0
     for j in m_list:
-        internal_row_counter = 0
+        
         if i == j:
             temp_m.loc[j, i] = 0
             internal_row_counter += 1
