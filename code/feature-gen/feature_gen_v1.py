@@ -214,6 +214,17 @@ m = pd.DataFrame({'Movie_Name':['m1', 'm2', 'm3', 'm4'], 'Cast':[m1, m2, m3, m4]
 mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
 #mov_mat = mov_mat.fillna(0)
 
+m_list = m['Movie_Name']
+
+for i in m_list:
+    temp_m = pd.DataFrame(index=m_list, columns=[i])
+    for j in m_list:
+        if i == j:
+            temp_m.loc[j, i] = 0
+        else:
+            temp_m.loc[j, i] = 1
+    
+    mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
 
 
 # =============================================================================
