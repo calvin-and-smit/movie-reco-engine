@@ -218,11 +218,14 @@ m_list = m['Movie_Name']
 
 for i in m_list:
     temp_m = pd.DataFrame(index=m_list, columns=[i])
+    row_counter = 0
     for j in m_list:
         if i == j:
             temp_m.loc[j, i] = 0
+            row_counter += 1
         else:
             temp_m.loc[j, i] = 1
+            row_counter += 1
     
     mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
 
