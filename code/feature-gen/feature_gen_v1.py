@@ -218,16 +218,29 @@ m_list = m['Movie_Name']
 
 for i in m_list:
     temp_m = pd.DataFrame(index=m_list, columns=[i])
-    row_counter = 0
+    external_row_counter = 0
+    external_cast = m.loc[external_row_counter, 'Cast'].replace(' ', '').split(',')
+    print(external_cast)
+    print('\n')
     for j in m_list:
+        internal_row_counter = 0
         if i == j:
             temp_m.loc[j, i] = 0
-            row_counter += 1
+            internal_row_counter += 1
         else:
             #temp_m.loc[j, i] = 1
+            internal_cast = m.loc[internal_row_counter, 'Cast'].replace(' ', '').split(',')
+            print(internal_cast)
+            temp_sum = 0
+            for ec in external_cast:
+                if ec in internal_cast:
+                    temp_sum += 1
+                    print(temp_sum)
+            temp_m.loc[j, i] = temp_sum/len(internal_cast)
+            internal_row_counter += 1
             
-            row_counter += 1
-    
+            
+    external_row_counter += 1
     mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
 
 
