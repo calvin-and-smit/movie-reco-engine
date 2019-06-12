@@ -224,7 +224,8 @@ for i in m_list:
             temp_m.loc[j, i] = 0
             row_counter += 1
         else:
-            temp_m.loc[j, i] = 1
+            #temp_m.loc[j, i] = 1
+            
             row_counter += 1
     
     mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
