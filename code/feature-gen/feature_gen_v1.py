@@ -203,7 +203,7 @@ for i in test[0].replace(' ', '').split(','):
 
 #####################
     
-m1 = 'Johnny Depp, Brad Pitt, George Soros, Bono'
+m1 = 'Julia Roberts, Liv Tyler, George Soros, Bono'
 m2 = 'Julia Roberts, Liv Tyler, George Soros'
 m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
 m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
@@ -233,7 +233,7 @@ for i in m_list:
             if ec in internal_cast:
                 temp_sum += 1
                 print(temp_sum)
-        temp_m.loc[j, i] = temp_sum/len(external_cast)
+        temp_m.loc[j, i] = temp_sum/len(internal_cast)
         internal_row_counter += 1
             
     print('\n') 
