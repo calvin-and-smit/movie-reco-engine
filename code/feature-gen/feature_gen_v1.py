@@ -214,7 +214,6 @@ m = pd.DataFrame({'Movie_Name':['m1', 'm2', 'm3', 'm4'], 'Cast':[m1, m2, m3, m4]
 mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
 #mov_mat = mov_mat.fillna(0)
 
-c_list = m['Cast']
 m_list = m['Movie_Name']
 
 external_row_counter = 0
