@@ -239,6 +239,7 @@ for i in m_list:
 
 
 # Need to figure out how to select a single column with header as the test movie
+    # then that subset gets unioned with the df_knn dataframe
 
 
 
