@@ -240,19 +240,7 @@ for i in m_list:
 
 # Need to figure out how to select a single column with header as the test movie
 
-# =============================================================================
-# 
-# # variables for knn
-# Audience_Score - done
-# Franchise - done
-# MI_Rating 'dummy??????????
-# Tomato_Meter - done
-# Scaled_Runtime - done
-# Genre 'dummy
-# Need to bring in cast as well 
-# 
-# 
-# =============================================================================
+
 
 
 
