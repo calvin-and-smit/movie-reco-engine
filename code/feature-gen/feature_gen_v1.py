@@ -238,6 +238,8 @@ for i in m_list:
     print('\n')  
 
 
+# Need to figure out how to select a single column with header as the test movie
+
 # =============================================================================
 # 
 # # variables for knn
