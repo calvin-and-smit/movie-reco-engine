@@ -194,13 +194,6 @@ for i in ind:
 #   - maybe extract topics from description and then compare?
 
 
-test = ['Brad Pitt, George Clooney']
-train = ['Johnny Depp, Brad Pitt, George Soros, Bono']
-
-
-for i in test[0].replace(' ', '').split(','):
-    print(i in train[0].replace(' ', '').split(','))
-
 #####################
     
 m1 = 'Julia Roberts, Liv Tyler, George Soros, Bono'
