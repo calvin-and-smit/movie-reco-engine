@@ -201,7 +201,7 @@ m2 = 'Julia Roberts, Liv Tyler, George Soros'
 m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
 m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
 
-m = pd.DataFrame({'Movie_Name':df_final['_id'][0:5], 'Cast':df_final['Updated_Cast'][0:5]})
+m = pd.DataFrame({'Movie_Name':df_final['_id'][0:10], 'Cast':df_final['Updated_Cast'][0:10]})
 
 
 mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
@@ -239,7 +239,7 @@ for i in m_list:
 def get_col(df, colname):
     return df.loc[:, colname]
 
-temp1 = get_col(mov_mat, df_final.loc[1,'_id'])
+temp1 = get_col(mov_mat, df_final.loc[7,'_id'])
 
 temp1
 
