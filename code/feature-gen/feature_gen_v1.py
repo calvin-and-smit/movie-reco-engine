@@ -243,9 +243,10 @@ for i in m_list:
 
 
 
+def get_col(df):
+    
 
-
-
+temp1 = get_col('abc')
 
 
 
