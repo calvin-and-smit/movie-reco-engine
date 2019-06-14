@@ -212,30 +212,23 @@ m_list = m['Movie_Name']
 external_row_counter = 0
 for i in m_list:
     temp_m = pd.DataFrame(index=m_list, columns=[i])
-    
     external_cast = m.loc[external_row_counter, 'Cast'].replace(' ', '').split(',')
-    print(external_cast)
-    print('\n')
     internal_row_counter = 0
     for j in m_list:
         
         internal_cast = m.loc[internal_row_counter, 'Cast'].replace(' ', '').split(',')
-        print(internal_cast)
+        
         temp_sum = 0
         for ec in external_cast:
             if ec in internal_cast:
                 temp_sum += 1
-                print(temp_sum)
+                
         temp_m.loc[j, i] = temp_sum/len(internal_cast)
         internal_row_counter += 1
             
-    print('\n') 
-    print('\n')        
     external_row_counter += 1
     mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
-    print(mov_mat)
-    print('\n') 
-    print('\n')  
+  
 
 
 # Need to figure out how to select a single column with header as the test movie
