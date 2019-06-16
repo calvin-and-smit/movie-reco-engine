@@ -14,3 +14,5 @@ if __name__ == '__main__':
     # Execute mp_scraper.main()
     mp_scraper.main(db_cred=db_credential, worker_count=64)
     pass
+
+
