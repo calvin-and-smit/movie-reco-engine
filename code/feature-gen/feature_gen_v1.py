@@ -93,7 +93,7 @@ df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 # Cleaning up  cast names
 # Firstly, replacing the NaNs with 0s
-df['Casts'].fillna(0, inplace = True)
+df['Casts'].fillna('NA', inplace = True)
 
 # Secondly, removing the on-screen character names from the list
 # and also adding the new resulting cast list to the dataframe
@@ -139,7 +139,7 @@ cols = ['Audience_Score', 'Franchise', 'Tomato_Meter', 'Scaled_Runtime',
 df_knn = df_final[cols]
 
 # function for knn
-# sckit-learn algo here
+# scikit-learn algo here
 
 # custom knn from scratch
 # function to calculate distance between 2 instances
@@ -196,12 +196,12 @@ for i in ind:
 
 #####################
     
-m1 = 'Julia Roberts, Liv Tyler, George Soros, Bono'
-m2 = 'Julia Roberts, Liv Tyler, George Soros'
-m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
-m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
+# m1 = 'Julia Roberts, Liv Tyler, George Soros, Bono'
+# m2 = 'Julia Roberts, Liv Tyler, George Soros'
+# m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
+# m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
 
-m = pd.DataFrame({'Movie_Name':df_final['_id'][0:10], 'Cast':df_final['Updated_Cast'][0:10]})
+m = pd.DataFrame({'Movie_Name':df_final['_id'], 'Cast':df_final['Updated_Cast']})
 
 
 mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
