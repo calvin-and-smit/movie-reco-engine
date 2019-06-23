@@ -87,7 +87,7 @@ for i in range(len(df['_id'])):
 
 
 # Movie Rating (to be used in conjunction with Genre)
-# Removing the extra content within parathesis that explains the basis for the rating
+# Removing the extra content within parenthesis that explains the basis for the rating
 df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 
@@ -164,7 +164,7 @@ def get_neighbors(test_instance, df, k):
     return indices
     
 
-test_index = 1126
+test_index = 11150
 recos = 4
 test_instance = df_knn_v2.iloc[test_index]
 ind = get_neighbors(test_instance, df_knn_v2, recos)
