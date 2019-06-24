@@ -57,8 +57,9 @@ for i in range(len(df['_id'])):
 yr_max = max(df['Movie_Yr'])
 yr_min = min(df['Movie_Yr'])
 df['Scaled_Movie_Yr'] = 0.000
-for i in range(len(df['_id'])):
-    df.loc[i, 'Scaled_Movie_Yr'] = (df.loc[i, 'Movie_Yr'] - yr_min)/(yr_max - yr_min)
+# for i in range(len(df['_id'])):
+#     df.loc[i, 'Scaled_Movie_Yr'] = (df.loc[i, 'Movie_Yr'] - yr_min)/(yr_max - yr_min)
+df['Scaled_Movie_Yr'] = (df['Movie_Yr'] - yr_min)/(yr_max - yr_min)
 
 
 # Runtime
@@ -87,7 +88,7 @@ for i in range(len(df['_id'])):
 
 
 # Movie Rating (to be used in conjunction with Genre)
-# Removing the extra content within parathesis that explains the basis for the rating
+# Removing the extra content within parenthesis that explains the basis for the rating
 df['MI_Rating'] = df['MI_Rating'].str.replace(r'\s+\(.*\)','')
 
 
