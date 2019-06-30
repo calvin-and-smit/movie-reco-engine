@@ -202,7 +202,7 @@ for i in ind:
 # m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
 # m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
 
-#subset
+#copy of the data
 m = pd.DataFrame({'Movie_Name':df_final['_id'], 'Cast':df_final['Updated_Cast']})
 
 
