@@ -8,7 +8,7 @@ sys.path.append('../scraping')
 sys.path.append('../tools')
 import db_connect
 import math
-
+import time
 import pandas as pd
 import numpy as np
 
@@ -202,6 +202,9 @@ for i in ind:
 # m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
 # m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
 
+
+t0 = time.time()
+
 #copy of the data
 m = pd.DataFrame({'Movie_Name':df_final['_id'], 'Cast':df_final['Updated_Cast']})
 
@@ -232,6 +235,9 @@ for i in m_list:
     mov_mat = pd.concat([mov_mat, temp_m], axis = 1, sort = False)
   
 
+
+print(mov_mat.shape)
+print(time.time() - t0)
 
 # Need to figure out how to select a single column with header as the test movie
     # then that subset gets unioned with the df_knn dataframe
