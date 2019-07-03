@@ -197,11 +197,6 @@ for i in ind:
 
 #####################
     
-# m1 = 'Julia Roberts, Liv Tyler, George Soros, Bono'
-# m2 = 'Julia Roberts, Liv Tyler, George Soros'
-# m3 = 'Tom Hanks, Adam Sand, Leo Messi, Suarez'
-# m4 = 'Johnny Depp, Adam Sand, George Soros, Liv Tyler'
-
 
 t0 = time.time()
 
