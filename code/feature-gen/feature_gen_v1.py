@@ -201,7 +201,7 @@ for i in ind:
 t0 = time.time()
 
 #copy of the data
-m = pd.DataFrame({'Movie_Name':df_final['_id'][0:1000], 'Cast':df_final['Updated_Cast'][0:1000]})
+m = pd.DataFrame({'Movie_Name':df_final['_id'][0:100], 'Cast':df_final['Updated_Cast'][0:100]})
 
 
 mov_mat = pd.DataFrame(index=m['Movie_Name'], columns=['A'])
