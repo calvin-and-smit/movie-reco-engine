@@ -47,12 +47,12 @@ df['Tomato_Meter'] = pd.to_numeric(df['Tomato_Meter'].str.replace('%', ''), erro
 df['Movie_Yr'] = 1900
 for i in range(len(df['_id'])):
     try:
-        df['Movie_Yr'] = pd.to_numeric(df['MI_In_Theaters_1'][-4:], errors = 'coerce')
+        df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_In_Theaters_1'][-4:], errors = 'coerce')
     except:
         try:
-            df['Movie_Yr'] = pd.to_numeric(df['MI_On_Disc_1'][-4:], errors = 'coerce')
+            df.loc[i, 'Movie_Yr'] = pd.to_numeric(df.loc[i, 'MI_On_Disc_1'][-4:], errors = 'coerce')
         except:
-            df['Movie_Yr'] = 1900
+            df.loc[i, 'Movie_Yr'] = 1900
          
 yr_max = max(df['Movie_Yr'])
 yr_min = min(df['Movie_Yr'])
